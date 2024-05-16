@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://osjos5q8palv"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_bsgab"]
+[ext_resource type="Script" path="res://scripts/components/health_component.gd" id="1_inuh8"]
+[ext_resource type="Script" path="res://scripts/components/hitbox_component.gd" id="2_2tfcn"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_y1kt6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ewfx"]
+size = Vector2(30, 30)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_bsgab")
+
+[node name="TempSprite" type="Sprite2D" parent="."]
+scale = Vector2(30.5, 30.5)
+texture = SubResource("CanvasTexture_y1kt6")
+
+[node name="Health" type="Node2D" parent="."]
+script = ExtResource("1_inuh8")
+
+[node name="HitBox" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+script = ExtResource("2_2tfcn")
+health_component = NodePath("../Health")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("RectangleShape2D_0ewfx")
