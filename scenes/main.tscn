@@ -1,8 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://d372d30v65ab3"]
+[gd_scene load_steps=4 format=3 uid="uid://d372d30v65ab3"]
 
 [ext_resource type="PackedScene" uid="uid://osjos5q8palv" path="res://scenes/player.tscn" id="1_g5a11"]
+[ext_resource type="PackedScene" uid="uid://vmwj68imf4du" path="res://scenes/test_obstacle.tscn" id="2_oh37n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fdlym"]
+radius = 32.0
 
 [node name="Main" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_g5a11")]
 position = Vector2(200, 400)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(225, 210)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_fdlym")
+
+[node name="Obstacle" parent="." instance=ExtResource("2_oh37n")]
+position = Vector2(1251, 415)
