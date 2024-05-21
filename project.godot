@@ -14,6 +14,10 @@ config/name="MOB_Game"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameParameters="*res://scripts/game_parameters.gd"
+
 [display]
 
 window/size/viewport_width=1280
