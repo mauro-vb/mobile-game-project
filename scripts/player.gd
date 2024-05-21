@@ -17,6 +17,9 @@ func _physics_process(_delta):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var up = wants_move_up()
 	var down = wants_move_down()
+	
+	if position.y < 0 or position.y > GameParameters.WINDOW_HEIGHT:
+		velocity *= -1
 
 	if down and up:
 		decelerate.call()
