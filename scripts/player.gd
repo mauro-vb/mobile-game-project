@@ -43,5 +43,8 @@ func _on_hit_box_area_entered(area):
 		if hitbox.get_parent() is StaticWall:
 			velocity.y *= -1
 			hitbox.damage(1)
+	else:
+		print("ouch")
+		area.get_parent().speed = 0
 			
 

@@ -1,11 +1,11 @@
 extends Obstacle
 class_name StaticWall
 
-#var size : Vector2
+var size : Vector2
 
 func _ready():
-	var size = Vector2(500,randi_range(50, 200))
-	$HitBoxComponent/CollisionShape2D.shape.size = size
+	pass
+	#$HitBoxComponent/CollisionShape2D.shape.size = size
 	#$Sprite2D.
 
 func _process(delta):
