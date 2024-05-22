@@ -8,3 +8,6 @@ var invulnerable := false
 func damage(damage_amount:int):
 	if health_component:
 		health_component.damage(damage_amount)
+
+
+

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://pfw2ne7mseup"]
+[gd_scene load_steps=6 format=3 uid="uid://pfw2ne7mseup"]
 
 [ext_resource type="Script" path="res://scripts/components/hitbox_component.gd" id="2_4xudb"]
 [ext_resource type="Script" path="res://scripts/static_wall.gd" id="3_1gmwq"]
 [ext_resource type="Script" path="res://scripts/components/health_component.gd" id="3_garwq"]
+[ext_resource type="Texture2D" uid="uid://dnn8n3048qgl7" path="res://icon.svg" id="4_1fg68"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dxxsk"]
 
@@ -11,10 +12,17 @@ script = ExtResource("3_1gmwq")
 
 [node name="HitBoxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
 script = ExtResource("2_4xudb")
-health_component = NodePath("../HealthComponent")
+health_component = NodePath("../WallHealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]
 shape = SubResource("RectangleShape2D_dxxsk")
 
-[node name="HealthComponent" type="Node2D" parent="."]
+[node name="WallHealthComponent" type="Node2D" parent="."]
 script = ExtResource("3_garwq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -2)
+scale = Vector2(0.71875, 0.375)
+texture = ExtResource("4_1fg68")
+
+[connection signal="health_depleted" from="WallHealthComponent" to="." method="_on_health_component_health_depleted"]

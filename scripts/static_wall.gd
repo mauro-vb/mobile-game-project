@@ -1,15 +1,18 @@
 extends Obstacle
+class_name StaticWall
 
+#var size : Vector2
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	var random_size = func(): return randi_range(50, 150)
-	$HitBoxComponent/CollisionShape2D.shape.size = Vector2(random_size.call(),random_size.call())
+	var size = Vector2(500,randi_range(50, 200))
+	$HitBoxComponent/CollisionShape2D.shape.size = size
+	#$Sprite2D.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	super(delta)
 
 func _physics_process(delta):
 	super(delta)
+
+func _on_health_component_health_depleted():
+	queue_free()

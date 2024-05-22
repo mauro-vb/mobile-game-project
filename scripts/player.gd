@@ -38,4 +38,10 @@ func _physics_process(_delta):
 
 
 func _on_hit_box_area_entered(area):
-	print(area.name)
+	if area is HitBoxComponent:
+		var hitbox : HitBoxComponent = area
+		if hitbox.get_parent() is StaticWall:
+			velocity.y *= -1
+			hitbox.damage(1)
+			
+
