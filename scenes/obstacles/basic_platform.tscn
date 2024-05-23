@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://cse6nmmbfr0n1"]
+
+[ext_resource type="Script" path="res://scripts/spiked_platform.gd" id="1_rdnqi"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_nfapa"]
+
+[node name="BasicPlatform" type="StaticBody2D" node_paths=PackedStringArray("bounce_area", "hurt_area")]
+script = ExtResource("1_rdnqi")
+bounce_area = NodePath("HurtArea/FrontShape")
+hurt_area = NodePath("HurtArea")
+
+[node name="MainShape" type="CollisionPolygon2D" parent="."]
+position = Vector2(7.25002, 2.5)
+scale = Vector2(15.1195, 3.1636)
+polygon = PackedVector2Array(-17, -17, -17, 17, 17, 17, 17, -17)
+
+[node name="HurtArea" type="Area2D" parent="."]
+
+[node name="FrontShape" type="CollisionPolygon2D" parent="HurtArea"]
+position = Vector2(-180, 0)
+scale = Vector2(6.99262, 6.375)
+polygon = PackedVector2Array(-10, -10, -13, 0, -10, 10)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.541627, 0.351379, 0.525221, 1)
+position = Vector2(-0.499998, 0)
+scale = Vector2(123, 28)
+texture = SubResource("CanvasTexture_nfapa")

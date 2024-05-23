@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://ceqqsq0wbtokq"]
+
+[ext_resource type="Script" path="res://scripts/consumable.gd" id="1_n8ijy"]
+[ext_resource type="Script" path="res://scripts/components/hitbox_component.gd" id="2_7rfck"]
+[ext_resource type="Script" path="res://scripts/components/health_component.gd" id="3_q67ek"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g37lg"]
+
+[node name="Consumable" type="Node2D"]
+script = ExtResource("1_n8ijy")
+
+[node name="HitBoxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+script = ExtResource("2_7rfck")
+health_component = NodePath("../ConsumableHealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]
+shape = SubResource("CircleShape2D_g37lg")
+
+[node name="ConsumableHealthComponent" type="Node2D" parent="."]
+script = ExtResource("3_q67ek")
+
+[connection signal="health_depleted" from="ConsumableHealthComponent" to="." method="_on_health_component_health_depleted"]

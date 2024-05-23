@@ -10,8 +10,13 @@ func wants_move_up():
 	
 func wants_move_down():
 	return Input.is_action_pressed("down")
+	
+func hurt():
+	self.velocity.y = 0
 
 func _physics_process(_delta):
+	velocity.x = 0
+	position.x = 200
 	var decelerate = func(): velocity.y = lerp(velocity.y, 0.0, .05) # Lambda function to decelerate
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -40,11 +45,9 @@ func _physics_process(_delta):
 func _on_hit_box_area_entered(area):
 	if area is HitBoxComponent:
 		var hitbox : HitBoxComponent = area
+		hitbox.damage(1)
 		if hitbox.get_parent() is StaticWall:
 			velocity.y *= -1
-			hitbox.damage(1)
-	else:
+	elif area is Spikes:
 		print("ouch")
-		area.get_parent().speed = 0
-			
 
