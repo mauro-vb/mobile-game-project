@@ -1,8 +1,12 @@
 extends CharacterBody2D
+class_name Player
 
 
 const SPEED = 900.0
 const ACCELERATION = 55
+
+var in_obstacle_area := false
+var damage := 1
 
 
 func wants_move_up():
@@ -23,31 +27,24 @@ func _physics_process(_delta):
 	var up = wants_move_up()
 	var down = wants_move_down()
 	
+	
 	if position.y < 0 or position.y > GameParameters.WINDOW_HEIGHT:
 		velocity *= -1
+		
+	if not in_obstacle_area:
+		if down and up:
+			decelerate.call()
+		elif down and position.y < GameParameters.WINDOW_HEIGHT:
+			if velocity.y < SPEED:
+				velocity.y +=  ACCELERATION
 
-	if down and up:
-		decelerate.call()
-	elif down:
-		if velocity.y < SPEED:
-			velocity.y +=  ACCELERATION
+		elif up and position.y > 0:
+			if velocity.y > -SPEED:
+				velocity.y -=  ACCELERATION
 
-	elif up:
-		if velocity.y > -SPEED:
-			velocity.y -=  ACCELERATION
-
-	else:
-		decelerate.call()
+		else:
+			decelerate.call()
 		
 	move_and_slide()
 
-
-func _on_hit_box_area_entered(area):
-	if area is HitBoxComponent:
-		var hitbox : HitBoxComponent = area
-		hitbox.damage(1)
-		if hitbox.get_parent() is StaticWall:
-			velocity.y *= -1
-	elif area is Spikes:
-		print("ouch")
 
