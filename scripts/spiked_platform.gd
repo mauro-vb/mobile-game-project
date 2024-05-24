@@ -15,6 +15,7 @@ var speed
 var set_flash_state = func(v): sprite.material.set_shader_parameter("flashState", v)
 	
 func _ready():
+	add_to_group("platforms")
 	speed = base_speed
 	hurt_area.body_entered.connect(deal_dmg)
 	bounce_area.body_entered.connect(bounce)

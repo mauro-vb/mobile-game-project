@@ -19,6 +19,7 @@ func spawn_obstacle(obstacle_name, y = 300, x_displacement=0):
 	var obstacle = obstacle_dict[obstacle_name].instantiate()
 	obstacle.position = Vector2(SPAWN_LINE_X+x_displacement, y)
 	add_child(obstacle)
+	
 
 
 func _on_timer_timeout():
