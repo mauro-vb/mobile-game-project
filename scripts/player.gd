@@ -8,6 +8,9 @@ const ACCELERATION = 55
 var in_obstacle_area := false
 var damage := 1
 
+var set_flash_state = func(v): sprite.material.set_shader_parameter("flashState", v)
+
+@onready var sprite = $TempSprite
 
 func wants_move_up():
 	return Input.is_action_pressed("up")
@@ -47,4 +50,10 @@ func _physics_process(_delta):
 		
 	move_and_slide()
 
+func flash(color:Color,duration=.2):
+	sprite.material.set_shader_parameter("color", color)
+	var flash_tween = create_tween()
+	flash_tween.tween_method(set_flash_state, 0,1,duration/2)
+	flash_tween.tween_method(set_flash_state, 1,0,duration/2)
+	
 

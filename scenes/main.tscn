@@ -12,6 +12,7 @@ position = Vector2(200, 400)
 script = ExtResource("3_uqulu")
 
 [node name="Timer" type="Timer" parent="ObstacleGen"]
+wait_time = 2.0
 autostart = true
 
 [connection signal="timeout" from="ObstacleGen/Timer" to="ObstacleGen" method="_on_timer_timeout"]

@@ -1,13 +1,24 @@
 [gd_scene load_steps=4 format=3 uid="uid://bg63l4du5am1t"]
 
-[ext_resource type="Script" path="res://scripts/spikes.gd" id="1_dy45j"]
+[sub_resource type="GDScript" id="GDScript_2h8gf"]
+script/source = "extends Area2D
+class_name Spikes
+
+@export var damage = 1
+
+
+
+
+func _on_body_entered(body):
+	body.hurt()
+"
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_vm1a8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oi8rb"]
 
 [node name="Spikes" type="Area2D"]
-script = ExtResource("1_dy45j")
+script = SubResource("GDScript_2h8gf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(20, 30)
