@@ -4,8 +4,12 @@ class_name SpikedPlatform
 @export var base_speed := 10
 @export var bounce_area : Area2D
 @export var hurt_area : Area2D
-@onready var health := $PlatformHealth
 
+@onready var health := $PlatformHealth
+@onready var sprite := $TempSprite
+
+
+var bounceable := true
 var speed
 
 func _ready():
@@ -17,7 +21,6 @@ func _ready():
 	health.health_changed.connect(health_changed)
 
 func _physics_process(_delta):
-	hurt_area
 	position.x -= speed 
 	
 func _process(_delta):
@@ -25,23 +28,35 @@ func _process(_delta):
 		queue_free()
 		
 func deal_dmg(body):
+	bounceable = false
+	sprite.material.set_shader_parameter("color", Color("Red"))
+	sprite.material.set_shader_parameter("flashState",1)
 	if body is CharacterBody2D:
-		speed = base_speed/1.5
+		speed = base_speed/2
 		await get_tree().create_timer(.2).timeout
 		queue_free()
 	
 func bounce(body):
-	if body is Player:
-		bounce_area.damage(body.damage)
-		body.in_obstacle_area = true
-		body.velocity *= -1
+	if bounceable:
+		if body is Player:
+			bounce_area.damage(body.damage)
+			body.in_obstacle_area = true
+			body.velocity *= -1
 		
 func exited(body):
 	if body is Player:
 		body.in_obstacle_area = false
 		
+		
 func destroy():
+	await get_tree().create_timer(.1).timeout
 	queue_free()
 
 func health_changed():
-	print(health.health)
+	var flash_tween = create_tween()
+	var set_flash_state = func(v): sprite.material.set_shader_parameter("flashState", v)
+	flash_tween.tween_method(set_flash_state, 0,1,.1)
+	flash_tween.tween_method(set_flash_state, 1,0,.1)
+	#sprite.material.set_shader_parameter("flashState", 1)
+	#await get_tree().create_timer(.1).timeout
+	#sprite.material.set_shader_parameter("flashState", 0)
