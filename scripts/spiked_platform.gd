@@ -17,7 +17,7 @@ var set_flash_state = func(v): sprite.material.set_shader_parameter("flashState"
 func _ready():
 	add_to_group("platforms")
 	speed = base_speed
-	hurt_area.body_entered.connect(deal_dmg)
+	hurt_area.body_entered.connect(damage_player)
 	bounce_area.body_entered.connect(bounce)
 	bounce_area.body_exited.connect(exited)
 	health.health_depleted.connect(destroy)
@@ -30,12 +30,13 @@ func _process(_delta):
 	if position.x < -200:
 		queue_free()
 		
-func deal_dmg(body):
+func damage_player(body):
 	bounceable = false
 	var flash_tween = create_tween()
 	sprite.material.set_shader_parameter("color", Color("Red"))
 	flash_tween.tween_method(set_flash_state, 0,1,.2)
 	if body is CharacterBody2D:
+		body.velocity.y = 0
 		speed = base_speed/2
 		await get_tree().create_timer(.2).timeout
 		queue_free()

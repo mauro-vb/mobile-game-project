@@ -50,10 +50,12 @@ func _physics_process(_delta):
 		
 	move_and_slide()
 
-func flash(color:Color,duration=.2):
+func flash(color:Color,duration=.2,loops=1):
 	sprite.material.set_shader_parameter("color", color)
 	var flash_tween = create_tween()
+	flash_tween.set_loops(loops)
 	flash_tween.tween_method(set_flash_state, 0,1,duration/2)
 	flash_tween.tween_method(set_flash_state, 1,0,duration/2)
+	
 	
 

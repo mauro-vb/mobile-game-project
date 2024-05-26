@@ -9,7 +9,7 @@ height = 50.0
 [node name="SlowDown" type="Node2D" node_paths=PackedStringArray("area")]
 script = ExtResource("1_xjlvy")
 area = NodePath("Area")
-base_amplitude = 2
+base_speed = 8
 
 [node name="Area" type="Area2D" parent="."]
 

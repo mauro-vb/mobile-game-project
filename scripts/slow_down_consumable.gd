@@ -1,6 +1,13 @@
 extends Consumable
 
-func consumed(body):
+func consume(body):
 	if body is Player:
-		body.flash("green",1.0)
-		get_tree().call_group("platforms", "health_changed")
+		consumed.emit()
+		body.flash("purple",.2,5)
+		for platform in get_tree().get_nodes_in_group("platforms"):
+			platform.speed = platform.base_speed / 3
+		get_parent().pause(2)
+		queue_free()
+		
+		
+		#get_tree().call_group("platforms", "destroy")
