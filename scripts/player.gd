@@ -12,6 +12,9 @@ var set_flash_state = func(v): sprite.material.set_shader_parameter("flashState"
 
 @onready var sprite = $TempSprite
 
+func _ready():
+	add_to_group("player")
+
 func wants_move_up():
 	return Input.is_action_pressed("up")
 	

@@ -1,16 +1,18 @@
 extends Node2D
-
+var test = "test"
 
 const SPAWN_LINE_X = GameParameters.WINDOW_WIDTH *2
 
 var obstacle_dict := {"basic": preload("res://scenes/obstacles/basic_platform.tscn"),
-					"big": preload("res://scenes/obstacles/big_spiked_platform.tscn")}
+					"big": preload("res://scenes/obstacles/big_spiked_platform.tscn"),
+					"chasing":preload("res://scenes/obstacles/chasing_platform.tscn")
+					}
 
 var consumable_dict:= {"test":preload("res://scenes/consumables/slow_down_consumable.tscn")}
 
 
 func _ready():
-	spawn_consumable("test")
+	spawn_obstacle("chasing")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -30,10 +32,13 @@ func spawn_consumable(consumable_name, y = 300, x_displacement=0):
 
 func _on_timer_timeout():
 	var mid = GameParameters.WINDOW_HEIGHT / 2
-	if randf() > .5:
+	var rand = randf()
+	if rand <= .33:
 		spawn_obstacle("big", randi_range(30, GameParameters.WINDOW_HEIGHT-30))
-	else:
+	elif rand > .66:
 		spawn_tunnel()
+	else:
+		spawn_obstacle("chasing", randi_range(30, GameParameters.WINDOW_HEIGHT-30))
 	$Timer.wait_time = 2+randf()
 
 func pause(t):
