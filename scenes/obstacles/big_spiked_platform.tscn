@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://b750gftq6onpm"]
+
+[ext_resource type="Script" path="res://scripts/big_platform.gd" id="1_syn3p"]
+[ext_resource type="Shader" path="res://shaders/flash.gdshader" id="2_3d2ax"]
+[ext_resource type="Script" path="res://scripts/components/hitbox_component.gd" id="3_0svia"]
+[ext_resource type="Script" path="res://scripts/components/health_component.gd" id="4_05oym"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x14to"]
+size = Vector2(63, 4.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uvdho"]
+resource_local_to_scene = true
+shader = ExtResource("2_3d2ax")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/flashState = 0.0
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ym7rx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wrbh2"]
+size = Vector2(251, 444)
+
+[node name="BigSpikedPlatform" type="Node2D" node_paths=PackedStringArray("bounce_area", "hurt_area")]
+script = ExtResource("1_syn3p")
+bounce_area = NodePath("BounceArea")
+hurt_area = NodePath("HurtArea")
+
+[node name="HurtArea" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HurtArea"]
+position = Vector2(-0.000274658, 152.851)
+scale = Vector2(0.999999, 3.8831)
+polygon = PackedVector2Array(-249, 57, -258, 57, -258, -51, -250, -51)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtArea"]
+position = Vector2(-30, -53)
+shape = SubResource("RectangleShape2D_x14to")
+debug_color = Color(0.954558, 0.196541, 0.223294, 0.42)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtArea"]
+position = Vector2(-31, 395)
+shape = SubResource("RectangleShape2D_x14to")
+debug_color = Color(0.954558, 0.196541, 0.223294, 0.42)
+
+[node name="TempSprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_uvdho")
+position = Vector2(-124.5, 170.5)
+scale = Vector2(249, 443)
+texture = SubResource("PlaceholderTexture2D_ym7rx")
+
+[node name="BounceArea" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+script = ExtResource("3_0svia")
+health_component = NodePath("../PlatformHealth")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BounceArea"]
+position = Vector2(-123.5, 171)
+shape = SubResource("RectangleShape2D_wrbh2")
+
+[node name="PlatformHealth" type="Node2D" parent="."]
+script = ExtResource("4_05oym")
