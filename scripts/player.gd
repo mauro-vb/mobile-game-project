@@ -36,7 +36,9 @@ func _physics_process(_delta):
 	
 	
 	if position.y < 0 or position.y > GameParameters.WINDOW_HEIGHT:
-		velocity *= -1
+		var edges_spring_force = 500
+		velocity.y += edges_spring_force if velocity.y > 0 else -edges_spring_force
+		velocity.y *= -1
 		
 	if not in_obstacle_area:
 		if down and up:
