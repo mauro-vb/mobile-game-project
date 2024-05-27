@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1fn3eh2q2f4t"]
+
+[ext_resource type="FontFile" uid="uid://s6bqa01kltrc" path="res://assets/ethnocentric rg.otf" id="1_6hppt"]
+[ext_resource type="Script" path="res://scripts/ui/score.gd" id="2_kmpmg"]
+
+[node name="Hud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="Score" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -320.0
+offset_top = 10.0
+offset_right = -8.0
+offset_bottom = 69.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("1_6hppt")
+theme_override_font_sizes/font_size = 48
+text = "Score:
+0"
+horizontal_alignment = 2
+script = ExtResource("2_kmpmg")

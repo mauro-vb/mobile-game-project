@@ -4,10 +4,14 @@ class_name SpikedPlatform
 @export var base_speed := 10
 @export var bounce_area : Area2D
 @export var hurt_area : Area2D
+@export var destroy_points := 50
+@export var missed_points:= 25
 
 @onready var health := $PlatformHealth
 @onready var sprite := $TempSprite
 
+signal destroyed(points)
+signal missed(points)
 
 var bounceable := true
 var speed
@@ -28,6 +32,7 @@ func _physics_process(_delta):
 	
 func _process(_delta):
 	if position.x < -200:
+		missed.emit(missed_points)
 		queue_free()
 		
 func damage_player(body):
@@ -54,6 +59,7 @@ func exited(body):
 		
 func destroy():
 	await get_tree().create_timer(.1).timeout
+	destroyed.emit(destroy_points)
 	queue_free()
 
 func health_changed():
