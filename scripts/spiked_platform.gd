@@ -40,8 +40,9 @@ func damage_player(body):
 	var flash_tween = create_tween()
 	sprite.material.set_shader_parameter("color", Color("Red"))
 	flash_tween.tween_method(set_flash_state, 0,1,.2)
-	if body is CharacterBody2D:
+	if body is Player:
 		body.velocity.y = 0
+		body.health.damage(1)
 		speed = base_speed/2
 		await get_tree().create_timer(.2).timeout
 		queue_free()

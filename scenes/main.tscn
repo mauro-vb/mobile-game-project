@@ -20,11 +20,12 @@ autostart = true
 anchors_preset = 1
 anchor_left = 1.0
 anchor_bottom = 0.0
-offset_left = 1255.0
-offset_top = 25.0
-offset_right = 1255.0
-offset_bottom = 25.0
+offset_left = 4.0
+offset_top = 1.0
+offset_right = 1281.0
+offset_bottom = 137.0
 grow_horizontal = 0
 grow_vertical = 1
+size_flags_horizontal = 8
 
 [connection signal="timeout" from="ObstacleGen/Timer" to="ObstacleGen" method="_on_timer_timeout"]

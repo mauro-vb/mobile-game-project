@@ -10,7 +10,6 @@ func _process(delta):
 func _increase_score(points):
 	score += points
 	text = "Score:\n%s" % score
-	print(text)
 	
 func _decrease_score(points):
 	if points > score:
@@ -18,4 +17,3 @@ func _decrease_score(points):
 	else:
 		score -= points
 	text = "Score:\n%s" % score
-	print(text)
