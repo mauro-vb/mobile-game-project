@@ -15,8 +15,9 @@ shader_parameter/flashState = 0.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ewfx"]
 size = Vector2(30, 30)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("health")]
 script = ExtResource("1_bsgab")
+health = NodePath("Health")
 
 [node name="TempSprite" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_uavc1")
@@ -25,6 +26,7 @@ texture = SubResource("CanvasTexture_y1kt6")
 
 [node name="Health" type="Node2D" parent="."]
 script = ExtResource("1_inuh8")
+health = 10
 
 [node name="HitBox" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
 script = ExtResource("2_2tfcn")

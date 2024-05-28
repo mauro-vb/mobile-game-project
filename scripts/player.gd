@@ -11,6 +11,7 @@ var damage := 1
 var set_flash_state = func(v): sprite.material.set_shader_parameter("flashState", v)
 
 @onready var sprite = $TempSprite
+@export var health : HealthComponent
 
 func _ready():
 	add_to_group("player")

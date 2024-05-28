@@ -23,6 +23,8 @@ size = Vector2(251, 444)
 script = ExtResource("1_syn3p")
 bounce_area = NodePath("BounceArea")
 hurt_area = NodePath("HurtArea")
+destroy_points = 40
+missed_points = 30
 
 [node name="HurtArea" type="Area2D" parent="."]
 
