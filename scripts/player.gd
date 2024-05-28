@@ -10,6 +10,7 @@ var damage := 1
 
 var set_flash_state = func(v): sprite.material.set_shader_parameter("flashState", v)
 
+@onready var slider = $"../Slider"
 @onready var sprite = $TempSprite
 @export var health : HealthComponent
 
@@ -17,9 +18,11 @@ func _ready():
 	add_to_group("player")
 
 func wants_move_up():
+	return slider.y_val < - slider.deadzone
 	return Input.is_action_pressed("up")
 	
 func wants_move_down():
+	return slider.y_val > slider.deadzone
 	return Input.is_action_pressed("down")
 	
 func hurt():
