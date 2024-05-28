@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdycqchpca2fi"]
+
+[ext_resource type="Script" path="res://scripts/ui/slider.gd" id="1_rual7"]
+[ext_resource type="Script" path="res://scripts/ui/slider_knob.gd" id="2_1rof0"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_s8peq"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_s7r0d"]
+
+[node name="Slider" type="Node2D"]
+script = ExtResource("1_rual7")
+
+[node name="Line" type="Sprite2D" parent="."]
+scale = Vector2(3.3125, 270.988)
+texture = SubResource("CanvasTexture_s8peq")
+
+[node name="Knob" type="Sprite2D" parent="."]
+position = Vector2(1.90735e-06, 1.90735e-06)
+scale = Vector2(40.4375, 40.4375)
+texture = SubResource("PlaceholderTexture2D_s7r0d")
+script = ExtResource("2_1rof0")
+
+[node name="Button" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -45.0
+offset_top = -152.0
+offset_right = 47.0
+offset_bottom = 155.0
+
+[connection signal="button_down" from="Button" to="Knob" method="_on_button_down"]
+[connection signal="button_up" from="Button" to="Knob" method="_on_button_up"]
