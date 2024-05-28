@@ -6,6 +6,9 @@ class_name SpikedPlatform
 @export var hurt_area : Area2D
 @export var destroy_points := 50
 @export var missed_points:= 25
+@export var spring_force:=0
+
+@export var spawn_y_range:= Vector2(GameParameters.PLAYER_SIZE, GameParameters.WINDOW_HEIGHT-GameParameters.PLAYER_SIZE)
 
 @onready var health := $PlatformHealth
 @onready var sprite := $TempSprite
@@ -52,7 +55,8 @@ func bounce(body):
 		if body is Player:
 			bounce_area.damage(body.damage)
 			body.in_obstacle_area = true
-			body.velocity *= -1
+			body.velocity.y += spring_force if body.velocity.y > 0 else -spring_force
+			body.velocity.y *= -1
 		
 func exited(body):
 	if body is Player:

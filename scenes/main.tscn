@@ -13,7 +13,7 @@ position = Vector2(200, 400)
 script = ExtResource("3_uqulu")
 
 [node name="Timer" type="Timer" parent="ObstacleGen"]
-wait_time = 2.0
+wait_time = 3.0
 autostart = true
 
 [node name="Hud" parent="." instance=ExtResource("3_ooqh2")]

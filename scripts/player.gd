@@ -1,8 +1,8 @@
 extends CharacterBody2D
 class_name Player
 
-
 const SPEED = 900.0
+const MAX_SPEED = 1200.0
 const ACCELERATION = 55
 
 var in_obstacle_area := false
@@ -28,7 +28,8 @@ func hurt():
 func _physics_process(_delta):
 	velocity.x = 0
 	position.x = 200
-	var decelerate = func(): velocity.y = lerp(velocity.y, 0.0, .05) # Lambda function to decelerate
+	velocity.y = MAX_SPEED if velocity.y > MAX_SPEED else velocity.y 
+	var decelerate = func(): velocity.y = lerp(velocity.y, 0.0, .07) # Lambda function to decelerate
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var up = wants_move_up()
@@ -36,7 +37,9 @@ func _physics_process(_delta):
 	
 	
 	if position.y < 0 or position.y > GameParameters.WINDOW_HEIGHT:
-		velocity *= -1
+		var edges_spring_force = 500
+		velocity.y += edges_spring_force if velocity.y > 0 else -edges_spring_force
+		velocity.y *= -1
 		
 	if not in_obstacle_area:
 		if down and up:
