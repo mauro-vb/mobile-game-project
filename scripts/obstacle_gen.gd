@@ -24,8 +24,8 @@ func _process(_delta):
 func spawn_obstacle(obstacle_name, x_displacement=0):
 	var obstacle = obstacle_dict[obstacle_name].instantiate()
 	if obstacle_name == "big_healthy":
-		var min_space = 135 + GameParameters.PLAYER_SIZE  * 1.25
-		var max_space = 135 + GameParameters.PLAYER_SIZE  * 3
+		var min_space = 135 + GameParameters.PLAYER_SIZE  * 1.75
+		var max_space = 135 + GameParameters.PLAYER_SIZE  * 3.5
 		if randf() > .5:
 			obstacle.position = Vector2(SPAWN_LINE_X+x_displacement, randi_range(min_space, max_space))
 		else:

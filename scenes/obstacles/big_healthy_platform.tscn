@@ -14,13 +14,14 @@ shader_parameter/flashState = 0.0
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_wg8x1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yxb53"]
-size = Vector2(1243.06, 269)
+size = Vector2(876.53, 269)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i4xl8"]
 size = Vector2(22, 257)
 
 [node name="BigHealthyPlatform" type="Node2D" node_paths=PackedStringArray("bounce_area", "hurt_area")]
 script = ExtResource("1_le0ef")
+base_speed = 5
 bounce_area = NodePath("BounceArea")
 hurt_area = NodePath("HurtArea")
 spring_force = 150
@@ -28,19 +29,21 @@ spawn_y_range = Vector2(270, 270)
 
 [node name="TempSprite" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_sq6jk")
-position = Vector2(0.499997, 0.5)
-scale = Vector2(1241, 265)
+position = Vector2(-70, -0.5)
+scale = Vector2(868, 265)
 texture = SubResource("PlaceholderTexture2D_wg8x1")
 
 [node name="BounceArea" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+position = Vector2(116, -1)
 script = ExtResource("3_rf8xl")
 health_component = NodePath("../PlatformHealth")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BounceArea"]
-position = Vector2(0, 1)
+position = Vector2(-183.265, 1)
 shape = SubResource("RectangleShape2D_yxb53")
 
 [node name="HurtArea" type="Area2D" parent="."]
+position = Vector2(116, -1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtArea"]
 position = Vector2(-633, 0)
