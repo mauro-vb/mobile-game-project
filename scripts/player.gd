@@ -12,21 +12,30 @@ var set_flash_state = func(v): sprite.material.set_shader_parameter("flashState"
 
 
 @onready var sprite = $TempSprite
-@onready var slider = $"../Slider"
+
+var slider
+var buttons
 
 @export var health : HealthComponent
 
 func _ready(): 
+	print(buttons)
 	position.y = 360
 
 	add_to_group("player")
 
 func wants_move_up():
-	return slider.smooth_control_up(position.y)
+	if slider:
+		return slider.smooth_control_up(position.y)
+	elif buttons:
+		return buttons.up_pressing
 	return Input.is_action_pressed("up")
 	
 func wants_move_down():
-	return slider.smooth_control_down(position.y)
+	if slider:
+		return slider.smooth_control_down(position.y)
+	elif buttons:
+		return buttons.down_pressing
 	return Input.is_action_pressed("down")
 	
 func hurt():
