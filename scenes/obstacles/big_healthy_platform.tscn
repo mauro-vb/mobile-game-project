@@ -21,7 +21,6 @@ size = Vector2(22, 257)
 
 [node name="BigHealthyPlatform" type="Node2D" node_paths=PackedStringArray("bounce_area", "hurt_area")]
 script = ExtResource("1_le0ef")
-base_speed = 5
 bounce_area = NodePath("BounceArea")
 hurt_area = NodePath("HurtArea")
 spring_force = 150

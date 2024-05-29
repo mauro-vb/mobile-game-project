@@ -21,7 +21,7 @@ func _process(_delta):
 	pass
 
 
-func spawn_obstacle(obstacle_name, x_displacement=0):
+func spawn_obstacle(obstacle_name, x_displacement=0.0):
 	var obstacle = obstacle_dict[obstacle_name].instantiate()
 	if obstacle_name == "big_healthy":
 		var min_space = 135 + GameParameters.PLAYER_SIZE  * 1.75
@@ -40,7 +40,6 @@ func spawn_consumable(consumable_name, y = 300, x_displacement=0):
 	add_child(consumable)
 
 func _on_timer_timeout():
-	var mid = GameParameters.WINDOW_HEIGHT / 2
 	var rand = randf()
 	if rand >= .75:
 		spawn_obstacle("big_healthy")
@@ -49,8 +48,8 @@ func _on_timer_timeout():
 	elif rand >= .25:
 		spawn_obstacle("big")
 	else:
-		spawn_obstacle("chasing", randi_range(30, GameParameters.WINDOW_HEIGHT-30))
-	$Timer.wait_time = 2+randf()
+		spawn_obstacle("chasing", randf_range(30, GameParameters.WINDOW_HEIGHT-30))
+	$Timer.wait_time = 2.0+randf()
 
 func pause(t):
 	$Timer.stop()
@@ -58,10 +57,10 @@ func pause(t):
 	$Timer.start()
 
 func spawn_tunnel():
-	var separation = randi_range(GameParameters.PLAYER_SIZE + 150, 250)
-	var y_first = randi_range(30, GameParameters.WINDOW_HEIGHT-30)
+	var separation = randf_range(GameParameters.PLAYER_SIZE + 150, 250)
+	var y_first = randf_range(30, GameParameters.WINDOW_HEIGHT-30)
 	var y_second = y_first + separation if y_first < GameParameters.WINDOW_HEIGHT / 2 else y_first - separation
-	var x_delay = randi_range(50, 150) if randf() > .2 else 0 
+	var x_delay = randf_range(50, 150) if randf() > .2 else 0.0 
 	var obstacle1 = obstacle_dict["basic"].instantiate()
 	var obstacle2 = obstacle_dict["basic"].instantiate()
 	obstacle1.position = Vector2(SPAWN_LINE_X+x_delay,y_first)

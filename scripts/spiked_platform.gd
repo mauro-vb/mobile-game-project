@@ -1,7 +1,7 @@
 extends Node2D
 class_name SpikedPlatform
 
-@export var base_speed := 10
+@export var base_speed := 10.0
 @export var bounce_area : Area2D
 @export var hurt_area : Area2D
 @export var destroy_points := 50

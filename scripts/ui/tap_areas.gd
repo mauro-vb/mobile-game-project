@@ -12,9 +12,6 @@ func _ready():
 	
 	down_button.button_down.connect(_on_down_button_down)
 	down_button.button_up.connect(_on_down_button_up)
-
-func _process(delta):
-	print(up_pressing)
 	
 func _on_up_button_down() -> void:
 	up_pressing = true

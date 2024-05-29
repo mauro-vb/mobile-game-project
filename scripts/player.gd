@@ -19,7 +19,6 @@ var buttons
 @export var health : HealthComponent
 
 func _ready(): 
-	print(buttons)
 	position.y = 360
 
 	add_to_group("player")

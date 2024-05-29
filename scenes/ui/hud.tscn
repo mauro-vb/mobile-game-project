@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://b1fn3eh2q2f4t"]
 
-[ext_resource type="FontFile" uid="uid://s6bqa01kltrc" path="res://assets/fonts/ethnocentric rg.otf" id="1_6hppt"]
+[ext_resource type="FontFile" uid="uid://s6bqa01kltrc" path="res://assets/ethnocentric rg.otf" id="1_6hppt"]
 [ext_resource type="Script" path="res://scripts/ui/score.gd" id="2_kmpmg"]
 [ext_resource type="Script" path="res://scripts/ui/health.gd" id="3_85hfi"]
-[ext_resource type="Texture2D" uid="uid://r8366ylh8s2h" path="res://assets/icons/heart-full.png" id="4_5bpwf"]
+[ext_resource type="Texture2D" uid="uid://ba0b5omijrp0e" path="res://assets/icons/heart-full.png" id="4_5bpwf"]
 
 [node name="Hud" type="Control"]
 layout_mode = 3
