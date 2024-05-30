@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dbv0wewbbr501"]
 
-[ext_resource type="Script" path="res://scripts/spiked_platform.gd" id="1_rdnqi"]
+[ext_resource type="Script" path="res://scripts/obstacles/spiked_platform.gd" id="1_0toc3"]
 [ext_resource type="Shader" path="res://shaders/flash.gdshader" id="2_3tp2l"]
 [ext_resource type="Script" path="res://scripts/components/hitbox_component.gd" id="2_uhium"]
 [ext_resource type="Script" path="res://scripts/components/health_component.gd" id="3_vsaq8"]
@@ -17,7 +17,7 @@ shader_parameter/flashState = 0.0
 size = Vector2(514, 107)
 
 [node name="BasicPlatform" type="Node2D" node_paths=PackedStringArray("bounce_area", "hurt_area")]
-script = ExtResource("1_rdnqi")
+script = ExtResource("1_0toc3")
 bounce_area = NodePath("BounceArea")
 hurt_area = NodePath("HurtArea")
 

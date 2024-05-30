@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dl473f1b5ujqv"]
 
-[ext_resource type="Script" path="res://scripts/big_healthy_platform.gd" id="1_le0ef"]
+[ext_resource type="Script" path="res://scripts/obstacles/big_healthy_platform.gd" id="1_wyvjx"]
 [ext_resource type="Shader" path="res://shaders/flash.gdshader" id="2_1reah"]
 [ext_resource type="Script" path="res://scripts/components/hitbox_component.gd" id="3_rf8xl"]
 [ext_resource type="Script" path="res://scripts/components/health_component.gd" id="4_03muj"]
@@ -20,11 +20,9 @@ size = Vector2(876.53, 269)
 size = Vector2(22, 257)
 
 [node name="BigHealthyPlatform" type="Node2D" node_paths=PackedStringArray("bounce_area", "hurt_area")]
-script = ExtResource("1_le0ef")
+script = ExtResource("1_wyvjx")
 bounce_area = NodePath("BounceArea")
 hurt_area = NodePath("HurtArea")
-spring_force = 150
-spawn_y_range = Vector2(270, 270)
 
 [node name="TempSprite" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_sq6jk")

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="MOB_Game"
-run/main_scene="res://scenes/main.tscn"
+run/main_scene="res://scenes/ui/temp_menu.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
@@ -50,3 +50,4 @@ down={
 [rendering]
 
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true

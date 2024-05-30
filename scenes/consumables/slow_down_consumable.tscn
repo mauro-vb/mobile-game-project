@@ -1,15 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://3kv230l4yitc"]
 
-[ext_resource type="Script" path="res://scripts/slow_down_consumable.gd" id="1_xjlvy"]
+[ext_resource type="Script" path="res://scripts/consumables/slow_down_consumable.gd" id="1_qodm6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ttfr"]
 radius = 15.0
 height = 50.0
 
-[node name="SlowDown" type="Node2D" node_paths=PackedStringArray("area")]
-script = ExtResource("1_xjlvy")
-area = NodePath("Area")
-base_speed = 8
+[node name="SlowDown" type="Node2D"]
+script = ExtResource("1_qodm6")
 
 [node name="Area" type="Area2D" parent="."]
 

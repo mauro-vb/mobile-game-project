@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://61gj5xllewqi"]
 
-[ext_resource type="Script" path="res://scripts/chasing_platform.gd" id="1_j3vvl"]
+[ext_resource type="Script" path="res://scripts/obstacles/chasing_platform.gd" id="1_qlufp"]
 [ext_resource type="Script" path="res://scripts/components/hitbox_component.gd" id="2_krtr0"]
 [ext_resource type="Script" path="res://scripts/components/health_component.gd" id="3_r1rfj"]
 [ext_resource type="Shader" path="res://shaders/flash.gdshader" id="4_di3et"]
@@ -23,7 +23,7 @@ size = Vector2(48.5, 99)
 size = Vector2(233.75, 99.5)
 
 [node name="ChasingPlatform" type="Node2D" node_paths=PackedStringArray("bounce_area", "hurt_area")]
-script = ExtResource("1_j3vvl")
+script = ExtResource("1_qlufp")
 bounce_area = NodePath("BounceArea")
 hurt_area = NodePath("HurtArea")
 
