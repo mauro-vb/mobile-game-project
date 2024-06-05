@@ -9,7 +9,9 @@ var obstacle_dict := {"basic": preload("res://scenes/obstacles/basic_platform.ts
 					"big_healthy":preload("res://scenes/obstacles/big_healthy_platform.tscn")
 					}
 
-var consumable_dict:= {"test":preload("res://scenes/consumables/slow_down_consumable.tscn")}
+var consumable_dict:= {"test":preload("res://scenes/consumables/slow_down_consumable.tscn"),
+						"health":preload("res://scenes/consumables/consumable.tscn")
+						}
 
 
 func _ready():
@@ -35,11 +37,15 @@ func spawn_obstacle(obstacle_name, x_displacement=0.0):
 	add_child(obstacle)
 	
 func spawn_consumable(consumable_name, y = 300, x_displacement=0):
+	
 	var consumable = consumable_dict[consumable_name].instantiate()
-	consumable.position = Vector2(SPAWN_LINE_X+x_displacement, y)
+	consumable.position = Vector2(SPAWN_LINE_X+x_displacement, randi_range(200, 500))
+	consumable.rotation_degrees = randi()
 	add_child(consumable)
 
 func _on_timer_timeout():
+	if randf() > .92:
+		spawn_consumable("health")
 	var rand = randf()
 	if rand >= .75:
 		spawn_obstacle("big_healthy")

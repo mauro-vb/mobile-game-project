@@ -1,13 +1,19 @@
 extends Node2D
 
 @onready var player = $Player
+var slider_y_pos = 150
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player.health.health_depleted.connect(game_over)
+	if GameParameters.orientation == 1:
+		rotation_degrees = 180
+		position = Vector2(GameParameters.WINDOW_WIDTH, GameParameters.WINDOW_HEIGHT)
 	if GameParameters.CONTROLS_TYPE == "slider":
 		var slider = preload("res://scenes/ui/slider.tscn").instantiate()
 		slider.scale = Vector2(2,2)
-		slider.global_position = Vector2(GameParameters.WINDOW_WIDTH - 120, GameParameters.WINDOW_HEIGHT / 2)
+		slider.global_position = Vector2(GameParameters.WINDOW_WIDTH - slider_y_pos, GameParameters.WINDOW_HEIGHT / 2)
+		if GameParameters.orientation == 1:
+			slider.global_position = Vector2(slider_y_pos, GameParameters.WINDOW_HEIGHT / 2)
 		add_child(slider)
 		player.slider = slider
 	if GameParameters.CONTROLS_TYPE == "buttons":

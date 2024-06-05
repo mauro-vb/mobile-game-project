@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://d372d30v65ab3"]
+[gd_scene load_steps=7 format=3 uid="uid://d372d30v65ab3"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_dqbwn"]
 [ext_resource type="PackedScene" uid="uid://osjos5q8palv" path="res://scenes/player.tscn" id="1_g5a11"]
 [ext_resource type="PackedScene" uid="uid://b1fn3eh2q2f4t" path="res://scenes/ui/hud.tscn" id="3_ooqh2"]
 [ext_resource type="Script" path="res://scripts/obstacle_gen.gd" id="3_uqulu"]
 [ext_resource type="PackedScene" uid="uid://bayji16wyrmmi" path="res://scenes/parallax_background.tscn" id="5_fo8ab"]
+[ext_resource type="AudioStream" uid="uid://bon00hqqrqma0" path="res://assets/sound/temp_theme.mp3" id="6_ewrmh"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_dqbwn")
@@ -32,5 +33,9 @@ grow_vertical = 1
 size_flags_horizontal = 8
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("5_fo8ab")]
+
+[node name="BgMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_ewrmh")
+autoplay = true
 
 [connection signal="timeout" from="ObstacleGen/Timer" to="ObstacleGen" method="_on_timer_timeout"]

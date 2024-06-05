@@ -1,6 +1,11 @@
 extends Label
 
-var score = 0
+var score = 0: 
+	set(value):
+		text = "Score: %s " % value
+		GameParameters.LastScore = score
+		score = value
+		
 
 func _process(_delta):
 	for platform in get_tree().get_nodes_in_group("platforms"):
@@ -11,11 +16,9 @@ func _process(_delta):
 		
 func _increase_score(points):
 	score += points
-	text = "Score:\n%s" % score
 	
 func _decrease_score(points):
 	if points > score:
 		score = 0 
 	else:
 		score -= points
-	text = "Score:\n%s" % score

@@ -5,8 +5,10 @@ const WINDOW_HEIGHT = 720.0
 
 const WINDOW_WIDTH = 1280.0
 
-const PLAYER_SIZE = 30
+const PLAYER_SIZE = 45
 
 var orientation = 0 # landscape 0 portrait 1
 
 var CONTROLS_TYPE = "buttons"
+
+var LastScore := 0

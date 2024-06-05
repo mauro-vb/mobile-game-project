@@ -10,7 +10,8 @@ var damage := 1
 
 var set_flash_state = func(v): sprite.material.set_shader_parameter("flashState", v)
 
-
+@onready var block_sound = $BounceSound
+@onready var error_sound = $ErrorSound
 @onready var sprite = $TempSprite
 
 var slider
@@ -19,25 +20,29 @@ var buttons
 @export var health : HealthComponent
 
 func _ready() -> void:
-	position.y = 360
+	position.x = 2*(GameParameters.WINDOW_WIDTH / 7)
+	position.y = GameParameters.WINDOW_HEIGHT / 2
 	add_to_group("player")
 
 func wants_move_up() -> bool:
 	if slider:
 		return slider.smooth_control_up(position.y)
 	elif buttons:
-		return buttons.up_pressing
+		return buttons.up_pressing if GameParameters.orientation == 0 else buttons.down_pressing
 	return Input.is_action_pressed("up")
 	
 func wants_move_down() -> bool:
 	if slider:
 		return slider.smooth_control_down(position.y)
 	elif buttons:
-		return buttons.down_pressing
+		return buttons.down_pressing if GameParameters.orientation == 0 else buttons.up_pressing
 	return Input.is_action_pressed("down")
 	
 func hurt() -> void:
 	self.velocity.y = 0
+	health.damage(1)
+	flash(Color(1,1,1,.35), .3,2)
+	
 	
 func _process(_delta) -> void:
 	if velocity.y > 0:
@@ -47,7 +52,6 @@ func _process(_delta) -> void:
 
 func _physics_process(_delta) -> void:
 	velocity.x = 0
-	position.x = 200
 	velocity.y = MAX_SPEED if velocity.y > MAX_SPEED else velocity.y 
 	var decelerate = func(): velocity.y = lerp(velocity.y, 0.0, .07) # Lambda function to decelerate
 	# Get the input direction and handle the movement/deceleration.
@@ -83,12 +87,13 @@ func flash(color:Color,duration=.2,loops=1) -> void:
 	flash_tween.set_loops(loops)
 	flash_tween.tween_method(set_flash_state, 0,1,duration/2)
 	flash_tween.tween_method(set_flash_state, 1,0,duration/2)
+
 	
 func bounce() -> void:
 	var animation_tween = create_tween()
 	var animation_length := .1
-	animation_tween.tween_property(sprite, "scale:x", 3.0, animation_length/2)
+	animation_tween.tween_property(sprite, "scale:x", 3.6, animation_length/2)
 	animation_tween.parallel().tween_property(sprite, "scale:y", .5, animation_length/2)
 	
-	animation_tween.tween_property(sprite, "scale:x", 1.587, animation_length/2)
-	animation_tween.parallel().tween_property(sprite, "scale:y", 1.587, animation_length/2)
+	animation_tween.tween_property(sprite, "scale:x", 2.275, animation_length/2)
+	animation_tween.parallel().tween_property(sprite, "scale:y", 2.275, animation_length/2)

@@ -32,6 +32,10 @@ window/stretch/mode="canvas_items"
 
 project/assembly_name="MOB_Game"
 
+[gui]
+
+theme/custom_font="res://assets/fonts/SS Rainbow.otf"
+
 [input]
 
 up={

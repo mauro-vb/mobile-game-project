@@ -25,7 +25,7 @@ var p_y : float
 func _ready():
 	joystick_moved.connect(moved)
 
-func _process(delta): ####### 
+func _process(delta):
 	inactivity_timer += delta
 	# Adjust transparency based on pressing state
 	if knob.pressing:
@@ -39,7 +39,8 @@ func _process(delta): #######
 
 
 func normalize_player_y(player_y: float) -> float:
-	return (player_y - (GameParameters.WINDOW_HEIGHT / 2)) / (GameParameters.WINDOW_HEIGHT / 2)
+	var y = (player_y - (GameParameters.WINDOW_HEIGHT / 2)) / (GameParameters.WINDOW_HEIGHT / 2)
+	return y if GameParameters.orientation == 0 else -y
 
 
 func smooth_control_(player_y: float, direction: int) -> bool: ## WITH DIRECTION BUT LESS SMOOTH
@@ -63,7 +64,7 @@ func smooth_control_(player_y: float, direction: int) -> bool: ## WITH DIRECTION
 		return false
 
 func smooth_control(player_y: float, direction: int) -> bool:
-	p_y = player_y
+	p_y = player_y if GameParameters.orientation == 0 else GameParameters.WINDOW_HEIGHT - player_y
 	if knob.pressing:
 		var normalized_player_y = normalize_player_y(player_y)
 		var max_up = y_val <= -.95

@@ -8,8 +8,6 @@ class_name Consumable
 var speed
 var time_passed := 0.0
 
-signal consumed
-
 func _ready():
 	speed = base_speed
 	area.body_entered.connect(consume)
@@ -21,4 +19,5 @@ func _physics_process(delta):
 
 func consume(body):
 	if body is Player:
-		consumed.emit()
+		body.health.heal(1)
+		queue_free()

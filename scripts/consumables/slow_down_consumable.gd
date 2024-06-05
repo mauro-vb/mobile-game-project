@@ -2,7 +2,6 @@ extends Consumable
 
 func consume(body):
 	if body is Player:
-		consumed.emit()
 		body.flash("purple",.2,5)
 		for platform in get_tree().get_nodes_in_group("platforms"):
 			platform.speed = platform.base_speed / 3

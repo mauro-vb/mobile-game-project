@@ -45,8 +45,8 @@ func damage_player(body):
 	sprite.material.set_shader_parameter("color", Color("Red"))
 	flash_tween.tween_method(set_flash_state, 0,1,.2)
 	if body is Player:
-		body.velocity.y = 0
-		body.health.damage(1)
+		body.error_sound.play()
+		body.hurt()
 		speed = base_speed/2
 		await get_tree().create_timer(.2).timeout
 		queue_free()
@@ -55,6 +55,8 @@ func bounce(body):
 	if bounceable:
 		if body is Player:
 			body.bounce()
+			if not body.error_sound.playing:
+				body.block_sound.play()
 			bounce_area.damage(body.damage)
 			body.in_obstacle_area = true
 			body.velocity.y += spring_force if body.velocity.y > 0 else -spring_force
