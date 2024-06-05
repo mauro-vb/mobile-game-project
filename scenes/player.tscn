@@ -7,6 +7,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uavc1"]
 shader = ExtResource("2_wicmm")
+shader_parameter/base_color = Color(1, 1, 1, 1)
 shader_parameter/color = null
 shader_parameter/flashState = 0.0
 

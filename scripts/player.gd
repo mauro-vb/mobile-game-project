@@ -20,7 +20,6 @@ var buttons
 
 func _ready(): 
 	position.y = 360
-
 	add_to_group("player")
 
 func wants_move_up():
@@ -41,6 +40,7 @@ func hurt():
 	self.velocity.y = 0
 
 func _physics_process(_delta):
+	
 	velocity.x = 0
 	position.x = 200
 	velocity.y = MAX_SPEED if velocity.y > MAX_SPEED else velocity.y 
@@ -49,7 +49,6 @@ func _physics_process(_delta):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var up = wants_move_up()
 	var down = wants_move_down()
-	
 	
 	if position.y < 0 or position.y > GameParameters.WINDOW_HEIGHT:
 		var edges_spring_force = 500

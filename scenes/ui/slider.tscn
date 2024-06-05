@@ -26,6 +26,3 @@ offset_left = -45.0
 offset_top = -152.0
 offset_right = 47.0
 offset_bottom = 155.0
-
-[connection signal="button_down" from="Button" to="Knob" method="_on_button_down"]
-[connection signal="button_up" from="Button" to="Knob" method="_on_button_up"]

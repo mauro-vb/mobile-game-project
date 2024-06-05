@@ -7,8 +7,8 @@ class_name SpikedPlatform
 @export var destroy_points := 50
 @export var missed_points:= 25
 @export var spring_force:=0
-
 @export var spawn_y_range:= Vector2(GameParameters.PLAYER_SIZE, GameParameters.WINDOW_HEIGHT-GameParameters.PLAYER_SIZE)
+@export var rect_color : Color = Color(1,1,1)
 
 @onready var health := $PlatformHealth
 @onready var sprite := $TempSprite
@@ -23,6 +23,7 @@ var set_flash_state = func(v): sprite.material.set_shader_parameter("flashState"
 	
 func _ready():
 	add_to_group("platforms")
+	sprite.material.set_shader_parameter("base_color", rect_color)
 	speed = base_speed
 	hurt_area.body_entered.connect(damage_player)
 	bounce_area.body_entered.connect(bounce)
@@ -68,7 +69,7 @@ func destroy():
 	queue_free()
 
 func health_changed():
-	flash("white")
+	flash(Color("#c0c0c0"))
 
 func flash(color:Color):
 	sprite.material.set_shader_parameter("color", color)

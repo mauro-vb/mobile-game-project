@@ -2,16 +2,9 @@
 
 [ext_resource type="Script" path="res://scripts/obstacles/big_healthy_platform.gd" id="1_wyvjx"]
 [ext_resource type="Shader" path="res://shaders/flash.gdshader" id="2_1reah"]
+[ext_resource type="Texture2D" uid="uid://b4ay82rlvrkee" path="res://assets/1by1white.png" id="3_c4f7s"]
 [ext_resource type="Script" path="res://scripts/components/hitbox_component.gd" id="3_rf8xl"]
 [ext_resource type="Script" path="res://scripts/components/health_component.gd" id="4_03muj"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_sq6jk"]
-resource_local_to_scene = true
-shader = ExtResource("2_1reah")
-shader_parameter/color = null
-shader_parameter/flashState = 0.0
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_wg8x1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yxb53"]
 size = Vector2(876.53, 269)
@@ -19,16 +12,18 @@ size = Vector2(876.53, 269)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i4xl8"]
 size = Vector2(22, 257)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sq6jk"]
+resource_local_to_scene = true
+shader = ExtResource("2_1reah")
+shader_parameter/base_color = Color(1, 1, 1, 1)
+shader_parameter/color = null
+shader_parameter/flashState = 0.0
+
 [node name="BigHealthyPlatform" type="Node2D" node_paths=PackedStringArray("bounce_area", "hurt_area")]
 script = ExtResource("1_wyvjx")
 bounce_area = NodePath("BounceArea")
 hurt_area = NodePath("HurtArea")
-
-[node name="TempSprite" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_sq6jk")
-position = Vector2(-70, -0.5)
-scale = Vector2(868, 265)
-texture = SubResource("PlaceholderTexture2D_wg8x1")
+rect_color = Color(0.466667, 0.866667, 0.466667, 1)
 
 [node name="BounceArea" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
 position = Vector2(116, -1)
@@ -39,6 +34,12 @@ health_component = NodePath("../PlatformHealth")
 position = Vector2(-183.265, 1)
 shape = SubResource("RectangleShape2D_yxb53")
 
+[node name="BorderSprite" type="Sprite2D" parent="BounceArea"]
+self_modulate = Color(0.751881, 0.751881, 0.751881, 1)
+position = Vector2(-183.502, 1.00002)
+scale = Vector2(877.004, 268)
+texture = ExtResource("3_c4f7s")
+
 [node name="HurtArea" type="Area2D" parent="."]
 position = Vector2(116, -1)
 
@@ -46,6 +47,18 @@ position = Vector2(116, -1)
 position = Vector2(-633, 0)
 shape = SubResource("RectangleShape2D_i4xl8")
 debug_color = Color(0.948541, 0.207152, 0.248793, 0.42)
+
+[node name="DamageSprite" type="Sprite2D" parent="HurtArea"]
+self_modulate = Color(0.84988, 0.271003, 0.478281, 1)
+position = Vector2(-633.251, 0.999997)
+scale = Vector2(22.5019, 270)
+texture = ExtResource("3_c4f7s")
+
+[node name="TempSprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_sq6jk")
+position = Vector2(-70.5, 0.499993)
+scale = Vector2(871, 255)
+texture = ExtResource("3_c4f7s")
 
 [node name="PlatformHealth" type="Node2D" parent="."]
 script = ExtResource("4_03muj")
