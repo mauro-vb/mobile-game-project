@@ -1,11 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://bayji16wyrmmi"]
+[gd_scene load_steps=3 format=3 uid="uid://bayji16wyrmmi"]
 
-[ext_resource type="Texture2D" uid="uid://nxfa24ths7ea" path="res://assets/temp_background.png" id="1_6ti6g"]
+[ext_resource type="Script" path="res://scripts/parallax_background.gd" id="1_g1200"]
+[ext_resource type="Texture2D" uid="uid://nxfa24ths7ea" path="res://assets/sprites/temp_background.png" id="2_abvla"]
 
 [node name="ParallaxBackground" type="ParallaxBackground"]
+script = ExtResource("1_g1200")
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(2560, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+self_modulate = Color(1, 1, 1, 0.309804)
 position = Vector2(1280, 360)
-texture = ExtResource("1_6ti6g")
+texture = ExtResource("2_abvla")

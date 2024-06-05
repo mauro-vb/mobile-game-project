@@ -54,6 +54,7 @@ func damage_player(body):
 func bounce(body):
 	if bounceable:
 		if body is Player:
+			body.bounce()
 			bounce_area.damage(body.damage)
 			body.in_obstacle_area = true
 			body.velocity.y += spring_force if body.velocity.y > 0 else -spring_force

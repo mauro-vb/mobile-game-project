@@ -39,3 +39,9 @@ text = "Slider"
 layout_mode = 2
 size_flags_vertical = 3
 text = "Buttons"
+
+[node name="OrientationButton" type="Button" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Change orientation
+"

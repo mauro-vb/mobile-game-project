@@ -18,29 +18,34 @@ var buttons
 
 @export var health : HealthComponent
 
-func _ready(): 
+func _ready() -> void:
 	position.y = 360
 	add_to_group("player")
 
-func wants_move_up():
+func wants_move_up() -> bool:
 	if slider:
 		return slider.smooth_control_up(position.y)
 	elif buttons:
 		return buttons.up_pressing
 	return Input.is_action_pressed("up")
 	
-func wants_move_down():
+func wants_move_down() -> bool:
 	if slider:
 		return slider.smooth_control_down(position.y)
 	elif buttons:
 		return buttons.down_pressing
 	return Input.is_action_pressed("down")
 	
-func hurt():
+func hurt() -> void:
 	self.velocity.y = 0
-
-func _physics_process(_delta):
 	
+func _process(_delta) -> void:
+	if velocity.y > 0:
+		sprite.flip_v = true
+	elif velocity.y < 0:
+		sprite.flip_v = false
+
+func _physics_process(_delta) -> void:
 	velocity.x = 0
 	position.x = 200
 	velocity.y = MAX_SPEED if velocity.y > MAX_SPEED else velocity.y 
@@ -51,6 +56,7 @@ func _physics_process(_delta):
 	var down = wants_move_down()
 	
 	if position.y < 0 or position.y > GameParameters.WINDOW_HEIGHT:
+		bounce(  )
 		var edges_spring_force = 500
 		velocity.y += edges_spring_force if velocity.y > 0 else -edges_spring_force
 		velocity.y *= -1
@@ -71,12 +77,18 @@ func _physics_process(_delta):
 		
 	move_and_slide()
 
-func flash(color:Color,duration=.2,loops=1):
+func flash(color:Color,duration=.2,loops=1) -> void:
 	sprite.material.set_shader_parameter("color", color)
 	var flash_tween = create_tween()
 	flash_tween.set_loops(loops)
 	flash_tween.tween_method(set_flash_state, 0,1,duration/2)
 	flash_tween.tween_method(set_flash_state, 1,0,duration/2)
 	
+func bounce() -> void:
+	var animation_tween = create_tween()
+	var animation_length := .1
+	animation_tween.tween_property(sprite, "scale:x", 3.0, animation_length/2)
+	animation_tween.parallel().tween_property(sprite, "scale:y", .5, animation_length/2)
 	
-
+	animation_tween.tween_property(sprite, "scale:x", 1.587, animation_length/2)
+	animation_tween.parallel().tween_property(sprite, "scale:y", 1.587, animation_length/2)

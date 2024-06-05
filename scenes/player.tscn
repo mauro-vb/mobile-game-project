@@ -4,6 +4,10 @@
 [ext_resource type="Script" path="res://scripts/components/health_component.gd" id="1_inuh8"]
 [ext_resource type="Script" path="res://scripts/components/hitbox_component.gd" id="2_2tfcn"]
 [ext_resource type="Shader" path="res://shaders/flash.gdshader" id="2_wicmm"]
+[ext_resource type="Texture2D" uid="uid://c61jkqewx7lda" path="res://assets/sprites/output.png" id="5_hnqff"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ewfx"]
+size = Vector2(30, 30)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uavc1"]
 shader = ExtResource("2_wicmm")
@@ -11,19 +15,9 @@ shader_parameter/base_color = Color(1, 1, 1, 1)
 shader_parameter/color = null
 shader_parameter/flashState = 0.0
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_y1kt6"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ewfx"]
-size = Vector2(30, 30)
-
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("health")]
 script = ExtResource("1_bsgab")
 health = NodePath("Health")
-
-[node name="TempSprite" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_uavc1")
-scale = Vector2(30.5, 30.5)
-texture = SubResource("CanvasTexture_y1kt6")
 
 [node name="Health" type="Node2D" parent="."]
 script = ExtResource("1_inuh8")
@@ -38,3 +32,10 @@ shape = SubResource("RectangleShape2D_0ewfx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_0ewfx")
+
+[node name="TempSprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_uavc1")
+position = Vector2(-7.62939e-06, 7.62939e-06)
+rotation = 3.14159
+scale = Vector2(1.5875, 1.5875)
+texture = ExtResource("5_hnqff")
