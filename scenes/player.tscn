@@ -1,39 +1,51 @@
-[gd_scene load_steps=8 format=3 uid="uid://osjos5q8palv"]
+[gd_scene load_steps=10 format=3 uid="uid://osjos5q8palv"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_bsgab"]
 [ext_resource type="Script" path="res://scripts/components/health_component.gd" id="1_inuh8"]
 [ext_resource type="Script" path="res://scripts/components/hitbox_component.gd" id="2_2tfcn"]
 [ext_resource type="Shader" path="res://shaders/flash.gdshader" id="2_wicmm"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uavc1"]
-shader = ExtResource("2_wicmm")
-shader_parameter/color = null
-shader_parameter/flashState = 0.0
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_y1kt6"]
+[ext_resource type="Texture2D" uid="uid://c61jkqewx7lda" path="res://assets/sprites/output.png" id="5_hnqff"]
+[ext_resource type="AudioStream" uid="uid://cusx8d3mrorym" path="res://assets/sound/pinball.mp3" id="6_8b3r3"]
+[ext_resource type="AudioStream" uid="uid://cm6pjmsab4c2l" path="res://assets/sound/error.mp3" id="7_2h8hl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ewfx"]
 size = Vector2(30, 30)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uavc1"]
+shader = ExtResource("2_wicmm")
+shader_parameter/base_color = Color(1, 1, 1, 1)
+shader_parameter/color = null
+shader_parameter/flashState = 0.0
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("health")]
 script = ExtResource("1_bsgab")
 health = NodePath("Health")
 
-[node name="TempSprite" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_uavc1")
-scale = Vector2(30.5, 30.5)
-texture = SubResource("CanvasTexture_y1kt6")
-
 [node name="Health" type="Node2D" parent="."]
 script = ExtResource("1_inuh8")
-health = 10
+health = 5
 
 [node name="HitBox" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
 script = ExtResource("2_2tfcn")
 health_component = NodePath("../Health")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+scale = Vector2(1.6, 1.6)
 shape = SubResource("RectangleShape2D_0ewfx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.6, 1.6)
 shape = SubResource("RectangleShape2D_0ewfx")
+
+[node name="TempSprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_uavc1")
+rotation = 3.14159
+scale = Vector2(2.275, 2.275)
+texture = ExtResource("5_hnqff")
+
+[node name="BounceSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_8b3r3")
+volume_db = -7.0
+
+[node name="ErrorSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_2h8hl")
