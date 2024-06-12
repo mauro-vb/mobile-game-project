@@ -8,7 +8,7 @@ signal joystick_moved
 var y_val: float :
 	set(value):
 		var dir = 1 if (y_val - value) > 0 else -1
-		if abs(y_val - value) > .01 : # If movement is significant
+		if abs(y_val - value) > .005 : # If movement is significant
 			joystick_moved.emit(dir)
 		y_val = value
 
@@ -32,7 +32,7 @@ func _process(delta):
 		self.modulate.a = 0.4
 	else:
 		self.modulate.a = 1
-		knob.global_position.y = lerp(knob.global_position.y, p_y, delta*100)
+		#knob.global_position.y = lerp(knob.global_position.y, p_y, delta*100)
 		
 	if inactivity_timer >= inactivity_threshold:
 		slider_is_still = true

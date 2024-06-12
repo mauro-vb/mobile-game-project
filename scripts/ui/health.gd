@@ -5,7 +5,7 @@ extends HBoxContainer
 var heart_full = preload("res://assets/icons/heart-full.png")
 var heart_empty = preload("res://assets/icons/heart-broken.png")
 var heart_half = preload("res://assets/icons/heart-half.png")
-var player_health = preload("res://assets/sprites/tmp_player.png")
+var player_health = preload("res://assets/AnnaAlanArt/cropped_heart.png")
 @onready var player = get_tree().get_nodes_in_group("player")[0]
 
 func _ready():

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/ui/hud.gd" id="1_p8no5"]
 [ext_resource type="Script" path="res://scripts/ui/score.gd" id="2_kmpmg"]
 [ext_resource type="Script" path="res://scripts/ui/health.gd" id="3_85hfi"]
-[ext_resource type="Texture2D" uid="uid://c0cpsc1xd2d72" path="res://assets/sprites/tmp_player.png" id="3_ljqg5"]
+[ext_resource type="Texture2D" uid="uid://da2lvayaflwvq" path="res://assets/AnnaAlanArt/cropped_heart.png" id="3_cealr"]
 
 [node name="Hud" type="Control"]
 layout_mode = 3
@@ -33,27 +33,27 @@ metadata/_edit_group_ = true
 
 [node name="Heart1" type="TextureRect" parent="PanelContainer/HealthScoreContainer/HeartContainer"]
 layout_mode = 2
-texture = ExtResource("3_ljqg5")
+texture = ExtResource("3_cealr")
 stretch_mode = 2
 
 [node name="Heart2" type="TextureRect" parent="PanelContainer/HealthScoreContainer/HeartContainer"]
 layout_mode = 2
-texture = ExtResource("3_ljqg5")
+texture = ExtResource("3_cealr")
 stretch_mode = 2
 
 [node name="Heart3" type="TextureRect" parent="PanelContainer/HealthScoreContainer/HeartContainer"]
 layout_mode = 2
-texture = ExtResource("3_ljqg5")
+texture = ExtResource("3_cealr")
 stretch_mode = 2
 
 [node name="Heart4" type="TextureRect" parent="PanelContainer/HealthScoreContainer/HeartContainer"]
 layout_mode = 2
-texture = ExtResource("3_ljqg5")
+texture = ExtResource("3_cealr")
 stretch_mode = 2
 
 [node name="Heart5" type="TextureRect" parent="PanelContainer/HealthScoreContainer/HeartContainer"]
 layout_mode = 2
-texture = ExtResource("3_ljqg5")
+texture = ExtResource("3_cealr")
 stretch_mode = 2
 
 [node name="Score" type="Label" parent="PanelContainer/HealthScoreContainer"]
@@ -61,7 +61,7 @@ modulate = Color(0.752941, 0.752941, 0.752941, 1)
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 48
-text = "Score: 0"
+text = "Score: 0  "
 horizontal_alignment = 2
 script = ExtResource("2_kmpmg")
 metadata/_edit_group_ = true

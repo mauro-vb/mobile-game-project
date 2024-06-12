@@ -1,15 +1,250 @@
-[gd_scene load_steps=3 format=3 uid="uid://bayji16wyrmmi"]
+[gd_scene load_steps=7 format=3 uid="uid://bayji16wyrmmi"]
 
 [ext_resource type="Script" path="res://scripts/parallax_background.gd" id="1_g1200"]
-[ext_resource type="Texture2D" uid="uid://nxfa24ths7ea" path="res://assets/sprites/temp_background.png" id="2_abvla"]
+[ext_resource type="Texture2D" uid="uid://d5mucichmvyi" path="res://assets/AnnaAlanArt/backdropt.png" id="2_7jib4"]
+[ext_resource type="Texture2D" uid="uid://dpnmkx8plgoxx" path="res://assets/sprites/red_bg.png" id="3_8xgxc"]
+[ext_resource type="Texture2D" uid="uid://bki8jfq0r7ajp" path="res://assets/AnnaAlanArt/brick_500x100.png" id="3_488hi"]
+[ext_resource type="Texture2D" uid="uid://dmf8wuip8rn8s" path="res://assets/AnnaAlanArt/brick_230x100.png" id="4_2yccq"]
+[ext_resource type="Texture2D" uid="uid://tumcnlmri7j2" path="res://assets/AnnaAlanArt/brick_875x270.png" id="6_53u4d"]
 
 [node name="ParallaxBackground" type="ParallaxBackground"]
 script = ExtResource("1_g1200")
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+modulate = Color(0.94902, 0.796078, 0.941176, 0.85098)
 motion_mirroring = Vector2(2560, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
-self_modulate = Color(1, 1, 1, 0.309804)
+[node name="Original" type="Sprite2D" parent="ParallaxLayer"]
 position = Vector2(1280, 360)
-texture = ExtResource("2_abvla")
+texture = ExtResource("2_7jib4")
+
+[node name="Red" type="Sprite2D" parent="ParallaxLayer"]
+visible = false
+modulate = Color(0.68101, 0.68101, 0.68101, 0.678431)
+position = Vector2(1280, 360)
+texture = ExtResource("3_8xgxc")
+
+[node name="bricks" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(1.5, 1.5)
+motion_mirroring = Vector2(2560, 0)
+
+[node name="TempSprite2" type="Sprite2D" parent="bricks"]
+modulate = Color(0.637843, 0.637843, 0.637843, 1)
+position = Vector2(1220.1, 585)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_2yccq")
+
+[node name="TempSprite3" type="Sprite2D" parent="bricks"]
+modulate = Color(0.637843, 0.637843, 0.637843, 1)
+position = Vector2(2221.45, 268.5)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_2yccq")
+
+[node name="TempSprite6" type="Sprite2D" parent="bricks"]
+modulate = Color(0.637843, 0.637843, 0.637843, 1)
+position = Vector2(2023, 571)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("6_53u4d")
+
+[node name="TempSprite7" type="Sprite2D" parent="bricks"]
+modulate = Color(0.637843, 0.637843, 0.637843, 1)
+position = Vector2(634, 565)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_2yccq")
+
+[node name="TempSprite8" type="Sprite2D" parent="bricks"]
+modulate = Color(0.637843, 0.637843, 0.637843, 1)
+position = Vector2(1041, 147)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_2yccq")
+
+[node name="TempSprite11" type="Sprite2D" parent="bricks"]
+modulate = Color(0.637843, 0.637843, 0.637843, 1)
+position = Vector2(1708, 86)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_2yccq")
+
+[node name="TempSprite14" type="Sprite2D" parent="bricks"]
+modulate = Color(0.637843, 0.637843, 0.637843, 1)
+position = Vector2(136, 412)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_488hi")
+
+[node name="TempSprite9" type="Sprite2D" parent="bricks"]
+modulate = Color(0.637843, 0.637843, 0.637843, 1)
+position = Vector2(737, 317)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("6_53u4d")
+
+[node name="TempSprite12" type="Sprite2D" parent="bricks"]
+modulate = Color(0.637843, 0.637843, 0.637843, 1)
+position = Vector2(1591, 294)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_2yccq")
+
+[node name="bricks2" type="ParallaxLayer" parent="."]
+modulate = Color(0.693429, 0.69343, 0.693429, 1)
+motion_scale = Vector2(1.2, 1.2)
+motion_mirroring = Vector2(2560, 0)
+
+[node name="TempSprite2" type="Sprite2D" parent="bricks2"]
+modulate = Color(0.637843, 0.637843, 0.637843, 1)
+position = Vector2(1393.6, 608.5)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("4_2yccq")
+
+[node name="TempSprite3" type="Sprite2D" parent="bricks2"]
+modulate = Color(0.637843, 0.637843, 0.637843, 1)
+position = Vector2(2394.95, 292)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("4_2yccq")
+
+[node name="TempSprite6" type="Sprite2D" parent="bricks2"]
+modulate = Color(0.637843, 0.637843, 0.637843, 1)
+position = Vector2(2196.5, 594.5)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("6_53u4d")
+
+[node name="TempSprite7" type="Sprite2D" parent="bricks2"]
+modulate = Color(0.637843, 0.637843, 0.637843, 1)
+position = Vector2(807.5, 588.5)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("4_2yccq")
+
+[node name="TempSprite8" type="Sprite2D" parent="bricks2"]
+modulate = Color(0.637843, 0.637843, 0.637843, 1)
+position = Vector2(1214.5, 170.5)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("4_2yccq")
+
+[node name="TempSprite11" type="Sprite2D" parent="bricks2"]
+modulate = Color(0.637843, 0.637843, 0.637843, 1)
+position = Vector2(1881.5, 109.5)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("4_2yccq")
+
+[node name="TempSprite14" type="Sprite2D" parent="bricks2"]
+modulate = Color(0.637843, 0.637843, 0.637843, 1)
+position = Vector2(309.5, 435.5)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("3_488hi")
+
+[node name="TempSprite9" type="Sprite2D" parent="bricks2"]
+modulate = Color(0.637843, 0.637843, 0.637843, 1)
+position = Vector2(907, 356)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("6_53u4d")
+
+[node name="TempSprite4" type="Sprite2D" parent="bricks2"]
+modulate = Color(0.637843, 0.637843, 0.637843, 1)
+position = Vector2(1437.6, 537.5)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("4_2yccq")
+
+[node name="TempSprite5" type="Sprite2D" parent="bricks2"]
+modulate = Color(0.637843, 0.637843, 0.637843, 1)
+position = Vector2(2438.95, 221)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("4_2yccq")
+
+[node name="TempSprite10" type="Sprite2D" parent="bricks2"]
+modulate = Color(0.637843, 0.637843, 0.637843, 1)
+position = Vector2(2240.5, 523.5)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("6_53u4d")
+
+[node name="TempSprite12" type="Sprite2D" parent="bricks2"]
+modulate = Color(0.637843, 0.637843, 0.637843, 1)
+position = Vector2(851.5, 517.5)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("4_2yccq")
+
+[node name="TempSprite13" type="Sprite2D" parent="bricks2"]
+modulate = Color(0.637843, 0.637843, 0.637843, 1)
+position = Vector2(1384, 148)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("4_2yccq")
+
+[node name="TempSprite15" type="Sprite2D" parent="bricks2"]
+modulate = Color(0.637843, 0.637843, 0.637843, 1)
+position = Vector2(1925.5, 38.5)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("4_2yccq")
+
+[node name="TempSprite16" type="Sprite2D" parent="bricks2"]
+modulate = Color(0.637843, 0.637843, 0.637843, 1)
+position = Vector2(353.5, 364.5)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("3_488hi")
+
+[node name="TempSprite17" type="Sprite2D" parent="bricks2"]
+modulate = Color(0.637843, 0.637843, 0.637843, 1)
+position = Vector2(337, 600)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("6_53u4d")
+
+[node name="TempSprite18" type="Sprite2D" parent="bricks2"]
+modulate = Color(0.637843, 0.637843, 0.637843, 1)
+position = Vector2(491, 54)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("6_53u4d")
+
+[node name="TempSprite19" type="Sprite2D" parent="bricks2"]
+modulate = Color(0.637843, 0.637843, 0.637843, 1)
+position = Vector2(1213, 402)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("3_488hi")
+
+[node name="TempSprite20" type="Sprite2D" parent="bricks2"]
+modulate = Color(0.637843, 0.637843, 0.637843, 1)
+position = Vector2(1387.75, 409.5)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("4_2yccq")
+
+[node name="TempSprite21" type="Sprite2D" parent="bricks2"]
+modulate = Color(0.637843, 0.637843, 0.637843, 1)
+position = Vector2(2054.75, 348.5)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("4_2yccq")
+
+[node name="TempSprite22" type="Sprite2D" parent="bricks2"]
+modulate = Color(0.637843, 0.637843, 0.637843, 1)
+position = Vector2(1557.25, 387)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("4_2yccq")
+
+[node name="TempSprite23" type="Sprite2D" parent="bricks2"]
+modulate = Color(0.637843, 0.637843, 0.637843, 1)
+position = Vector2(294, 163)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("4_2yccq")
+
+[node name="TempSprite24" type="Sprite2D" parent="bricks2"]
+modulate = Color(0.637843, 0.637843, 0.637843, 1)
+position = Vector2(126.5, 83.5)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("3_488hi")
+
+[node name="TempSprite25" type="Sprite2D" parent="bricks2"]
+modulate = Color(0.637843, 0.637843, 0.637843, 1)
+position = Vector2(668.5, 165.5)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("4_2yccq")
+
+[node name="TempSprite26" type="Sprite2D" parent="bricks2"]
+modulate = Color(0.637843, 0.637843, 0.637843, 1)
+position = Vector2(1982.6, 649)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("4_2yccq")
+
+[node name="TempSprite27" type="Sprite2D" parent="bricks2"]
+modulate = Color(0.637843, 0.637843, 0.637843, 1)
+position = Vector2(1976.75, 450)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("4_2yccq")
+
+[node name="TempSprite28" type="Sprite2D" parent="bricks2"]
+modulate = Color(0.637843, 0.637843, 0.637843, 1)
+position = Vector2(2146.25, 427.5)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("4_2yccq")

@@ -1,14 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://c14k226kldf76"]
 
 [ext_resource type="Script" path="res://scripts/consumables/base_consumable.gd" id="1_2m27m"]
-[ext_resource type="Texture2D" uid="uid://c61jkqewx7lda" path="res://assets/sprites/output.png" id="2_6gncq"]
+[ext_resource type="Texture2D" uid="uid://da2lvayaflwvq" path="res://assets/AnnaAlanArt/cropped_heart.png" id="2_yl3i7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d54db"]
 
 [node name="Consumable" type="Node2D" node_paths=PackedStringArray("area")]
 script = ExtResource("1_2m27m")
 area = NodePath("Area2D")
-base_speed = 7
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -16,5 +15,4 @@ base_speed = 7
 shape = SubResource("CircleShape2D_d54db")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-rotation = -0.820305
-texture = ExtResource("2_6gncq")
+texture = ExtResource("2_yl3i7")

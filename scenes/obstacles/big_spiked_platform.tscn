@@ -1,16 +1,18 @@
-[gd_scene load_steps=9 format=3 uid="uid://b750gftq6onpm"]
+[gd_scene load_steps=11 format=3 uid="uid://b750gftq6onpm"]
 
 [ext_resource type="Script" path="res://Scripts/obstacles/big_platform.gd" id="1_hc7op"]
 [ext_resource type="Shader" path="res://shaders/flash.gdshader" id="2_3d2ax"]
 [ext_resource type="Script" path="res://scripts/components/hitbox_component.gd" id="3_0svia"]
 [ext_resource type="Texture2D" uid="uid://b4ay82rlvrkee" path="res://assets/1by1white.png" id="3_xa0ql"]
+[ext_resource type="Texture2D" uid="uid://d3mj4s333npb5" path="res://assets/sprites/Spritespike-0002.png" id="4_1vx6j"]
 [ext_resource type="Script" path="res://scripts/components/health_component.gd" id="4_05oym"]
+[ext_resource type="Texture2D" uid="uid://de6yplb3uk84j" path="res://assets/AnnaAlanArt/brick_250x450_2.png" id="5_dm0gl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wrbh2"]
 size = Vector2(250, 450)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x14to"]
-size = Vector2(63, 4.5)
+size = Vector2(55.75, 18.25)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uvdho"]
 resource_local_to_scene = true
@@ -21,10 +23,10 @@ shader_parameter/flashState = 0.0
 
 [node name="BigSpikedPlatform" type="Node2D" node_paths=PackedStringArray("bounce_area", "hurt_area")]
 script = ExtResource("1_hc7op")
+base_speed = 7.0
 bounce_area = NodePath("BounceArea")
 hurt_area = NodePath("HurtArea")
 spawn_y_range = Vector2(225, 495)
-rect_color = Color(3.17663e-06, 0.694266, 0.800988, 1)
 
 [node name="BounceArea" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
 position = Vector2(124, -171)
@@ -36,6 +38,7 @@ position = Vector2(-123.5, 171)
 shape = SubResource("RectangleShape2D_wrbh2")
 
 [node name="BorderSprite" type="Sprite2D" parent="BounceArea"]
+visible = false
 self_modulate = Color(0.751881, 0.751881, 0.751881, 1)
 position = Vector2(-124, 170.75)
 scale = Vector2(250, 448.5)
@@ -45,44 +48,220 @@ texture = ExtResource("3_xa0ql")
 position = Vector2(124, -171)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HurtArea"]
-position = Vector2(-0.000274658, 152.851)
+position = Vector2(-14, 157)
 scale = Vector2(0.999999, 3.8831)
 polygon = PackedVector2Array(-249, 57, -258, 57, -258, -51, -250, -51)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtArea"]
-position = Vector2(-30, -53)
+position = Vector2(-30, -62)
 shape = SubResource("RectangleShape2D_x14to")
 debug_color = Color(0.954558, 0.196541, 0.223294, 0.42)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtArea"]
-position = Vector2(-31, 395)
+position = Vector2(-33, 403)
 shape = SubResource("RectangleShape2D_x14to")
 debug_color = Color(0.954558, 0.196541, 0.223294, 0.42)
 
 [node name="DamageSprite" type="Sprite2D" parent="HurtArea"]
+visible = false
 self_modulate = Color(0.84988, 0.271003, 0.478281, 1)
 position = Vector2(-254.875, 172)
 scale = Vector2(10.251, 438)
 texture = ExtResource("3_xa0ql")
 
 [node name="DamageSprite2" type="Sprite2D" parent="HurtArea"]
+visible = false
 self_modulate = Color(0.84988, 0.271003, 0.478281, 1)
 position = Vector2(-30, -52.5763)
 scale = Vector2(-64.7487, 9.31439)
 texture = ExtResource("3_xa0ql")
 
 [node name="DamageSprite3" type="Sprite2D" parent="HurtArea"]
+visible = false
 self_modulate = Color(0.84988, 0.271003, 0.478281, 1)
 position = Vector2(-31, 392.528)
 rotation = 3.14159
 scale = Vector2(64.7487, -9.41018)
 texture = ExtResource("3_xa0ql")
 
+[node name="FrontSpikes" type="Sprite2D" parent="HurtArea"]
+position = Vector2(-124, 171)
+
+[node name="Spikes" type="Sprite2D" parent="HurtArea/FrontSpikes"]
+position = Vector2(-138, 138)
+rotation = -1.5708
+texture = ExtResource("4_1vx6j")
+
+[node name="Spikes2" type="Sprite2D" parent="HurtArea/FrontSpikes"]
+position = Vector2(-138, 155)
+rotation = -1.5708
+texture = ExtResource("4_1vx6j")
+
+[node name="Spikes3" type="Sprite2D" parent="HurtArea/FrontSpikes"]
+position = Vector2(-138, 172)
+rotation = -1.5708
+texture = ExtResource("4_1vx6j")
+
+[node name="Spikes4" type="Sprite2D" parent="HurtArea/FrontSpikes"]
+position = Vector2(-138, 189)
+rotation = -1.5708
+texture = ExtResource("4_1vx6j")
+
+[node name="Spikes5" type="Sprite2D" parent="HurtArea/FrontSpikes"]
+position = Vector2(-138, 205)
+rotation = -1.5708
+texture = ExtResource("4_1vx6j")
+
+[node name="Spikes6" type="Sprite2D" parent="HurtArea/FrontSpikes"]
+position = Vector2(-138, 55)
+rotation = -1.5708
+texture = ExtResource("4_1vx6j")
+
+[node name="Spikes7" type="Sprite2D" parent="HurtArea/FrontSpikes"]
+position = Vector2(-138, 72)
+rotation = -1.5708
+texture = ExtResource("4_1vx6j")
+
+[node name="Spikes8" type="Sprite2D" parent="HurtArea/FrontSpikes"]
+position = Vector2(-138, 89)
+rotation = -1.5708
+texture = ExtResource("4_1vx6j")
+
+[node name="Spikes9" type="Sprite2D" parent="HurtArea/FrontSpikes"]
+position = Vector2(-138, 106)
+rotation = -1.5708
+texture = ExtResource("4_1vx6j")
+
+[node name="Spikes10" type="Sprite2D" parent="HurtArea/FrontSpikes"]
+position = Vector2(-138, 122)
+rotation = -1.5708
+texture = ExtResource("4_1vx6j")
+
+[node name="Spikes11" type="Sprite2D" parent="HurtArea/FrontSpikes"]
+position = Vector2(-138, -29)
+rotation = -1.5708
+texture = ExtResource("4_1vx6j")
+
+[node name="Spikes12" type="Sprite2D" parent="HurtArea/FrontSpikes"]
+position = Vector2(-138, -12)
+rotation = -1.5708
+texture = ExtResource("4_1vx6j")
+
+[node name="Spikes13" type="Sprite2D" parent="HurtArea/FrontSpikes"]
+position = Vector2(-138, 5)
+rotation = -1.5708
+texture = ExtResource("4_1vx6j")
+
+[node name="Spikes14" type="Sprite2D" parent="HurtArea/FrontSpikes"]
+position = Vector2(-138, 22)
+rotation = -1.5708
+texture = ExtResource("4_1vx6j")
+
+[node name="Spikes15" type="Sprite2D" parent="HurtArea/FrontSpikes"]
+position = Vector2(-138, 38)
+rotation = -1.5708
+texture = ExtResource("4_1vx6j")
+
+[node name="Spikes16" type="Sprite2D" parent="HurtArea/FrontSpikes"]
+position = Vector2(-138, -112)
+rotation = -1.5708
+texture = ExtResource("4_1vx6j")
+
+[node name="Spikes17" type="Sprite2D" parent="HurtArea/FrontSpikes"]
+position = Vector2(-138, -95)
+rotation = -1.5708
+texture = ExtResource("4_1vx6j")
+
+[node name="Spikes18" type="Sprite2D" parent="HurtArea/FrontSpikes"]
+position = Vector2(-138, -78)
+rotation = -1.5708
+texture = ExtResource("4_1vx6j")
+
+[node name="Spikes19" type="Sprite2D" parent="HurtArea/FrontSpikes"]
+position = Vector2(-138, -61)
+rotation = -1.5708
+texture = ExtResource("4_1vx6j")
+
+[node name="Spikes20" type="Sprite2D" parent="HurtArea/FrontSpikes"]
+position = Vector2(-138, -45)
+rotation = -1.5708
+texture = ExtResource("4_1vx6j")
+
+[node name="Spikes21" type="Sprite2D" parent="HurtArea/FrontSpikes"]
+position = Vector2(-138, -162)
+rotation = -1.5708
+texture = ExtResource("4_1vx6j")
+
+[node name="Spikes22" type="Sprite2D" parent="HurtArea/FrontSpikes"]
+position = Vector2(-138, -145)
+rotation = -1.5708
+texture = ExtResource("4_1vx6j")
+
+[node name="Spikes23" type="Sprite2D" parent="HurtArea/FrontSpikes"]
+position = Vector2(-138, -128)
+rotation = -1.5708
+texture = ExtResource("4_1vx6j")
+
+[node name="Spikes26" type="Sprite2D" parent="HurtArea/FrontSpikes"]
+position = Vector2(-138, -211)
+rotation = -1.5708
+texture = ExtResource("4_1vx6j")
+
+[node name="Spikes27" type="Sprite2D" parent="HurtArea/FrontSpikes"]
+position = Vector2(-138, -194)
+rotation = -1.5708
+texture = ExtResource("4_1vx6j")
+
+[node name="Spikes28" type="Sprite2D" parent="HurtArea/FrontSpikes"]
+position = Vector2(-138, -178)
+rotation = -1.5708
+texture = ExtResource("4_1vx6j")
+
+[node name="BottomSpikes" type="Sprite2D" parent="HurtArea"]
+position = Vector2(-124, 171)
+
+[node name="Spikes" type="Sprite2D" parent="HurtArea/BottomSpikes"]
+position = Vector2(67, 233)
+rotation = 3.14159
+texture = ExtResource("4_1vx6j")
+
+[node name="Spikes2" type="Sprite2D" parent="HurtArea/BottomSpikes"]
+position = Vector2(83, 233)
+rotation = 3.14159
+texture = ExtResource("4_1vx6j")
+
+[node name="Spikes3" type="Sprite2D" parent="HurtArea/BottomSpikes"]
+position = Vector2(99, 233)
+rotation = 3.14159
+texture = ExtResource("4_1vx6j")
+
+[node name="Spikes4" type="Sprite2D" parent="HurtArea/BottomSpikes"]
+position = Vector2(115, 232)
+rotation = 3.14159
+texture = ExtResource("4_1vx6j")
+
+[node name="TopSpikes" type="Sprite2D" parent="HurtArea"]
+position = Vector2(-124, 171)
+
+[node name="Spikes" type="Sprite2D" parent="HurtArea/TopSpikes"]
+position = Vector2(70, -235)
+texture = ExtResource("4_1vx6j")
+
+[node name="Spikes2" type="Sprite2D" parent="HurtArea/TopSpikes"]
+position = Vector2(86, -235)
+texture = ExtResource("4_1vx6j")
+
+[node name="Spikes3" type="Sprite2D" parent="HurtArea/TopSpikes"]
+position = Vector2(102, -235)
+texture = ExtResource("4_1vx6j")
+
+[node name="Spikes4" type="Sprite2D" parent="HurtArea/TopSpikes"]
+position = Vector2(118, -235)
+texture = ExtResource("4_1vx6j")
+
 [node name="TempSprite" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_uvdho")
-position = Vector2(-3.5, -1.00002)
-scale = Vector2(243, 436)
-texture = ExtResource("3_xa0ql")
+texture = ExtResource("5_dm0gl")
 
 [node name="PlatformHealth" type="Node2D" parent="."]
 position = Vector2(-1, 1)
