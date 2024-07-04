@@ -33,7 +33,7 @@ script = ExtResource("1_0toc3")
 base_speed = 7.0
 bounce_area = NodePath("BounceArea")
 hurt_area = NodePath("HurtArea")
-spring_force = 250
+spring_force = 300
 
 [node name="BounceArea" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
 script = ExtResource("2_uhium")

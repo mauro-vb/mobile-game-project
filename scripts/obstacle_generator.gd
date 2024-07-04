@@ -15,9 +15,9 @@ var next_obstacle : String
 
 var health_sequence : Array = [false, false, false, false, false, true, true]
 var health_drop_index : int = 0
-var obstacle_sequences : Array = [["basics", "big", "chasing", "big_healthy"],
+var obstacle_sequences : Array = [["basics", "big", "", "big_healthy"],
 								["chasing", "basics", "big", "chasing"],
-								["chasing", "big", "basics", "big_healthy"],
+								["chasing", "big", "", "big_healthy"],
 								["big", "big", "basics", "chasing"]]
 var current_sequence : Array
 var shuffled_sequences : Array
@@ -32,7 +32,7 @@ func shuffle_sequences() -> void:
 @export var first_obstacle : String = "big" 
 
 var min_space:int = GameParameters.PLAYER_SIZE + 200 # Minimum possible space to squeeze into
-var max_space:int = min_space + 50
+var max_space:int = min_space + 30
 
 func _ready() -> void:
 	timer.wait_time = 5
@@ -79,7 +79,7 @@ func spawn_obstacle(obstacle_name:String, with_health:bool) -> void:
 	add_child(obstacle)
 	
 func instantiate_basics(with_health:bool) -> SpikedPlatform:
-	var separation:int = randf_range(min_space, max_space)
+	var separation:int = randf_range(min_space, max_space+20)
 	var y:int = randf_range(55, GameParameters.WINDOW_HEIGHT - separation - 55)
 	var x_delay:int = randi_range(30, 150)
 	

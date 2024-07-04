@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://din8gotk4rx34"]
 
 [ext_resource type="Script" path="res://scripts/ui/tap_areas.gd" id="1_dhg2i"]
-[ext_resource type="Texture2D" uid="uid://dkfb4ldoj888w" path="res://assets/AnnaAlanArt/allan_arrow.png" id="3_d22vv"]
+[ext_resource type="Texture2D" uid="uid://bitmja1fmgt1n" path="res://assets/AnnaAlanArt/alan_arrow.png" id="3_xnegl"]
 
 [node name="TapAreas" type="Control"]
 layout_mode = 3
@@ -24,29 +24,19 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 5.0
 
-[node name="UpArrow" type="TextureRect" parent="VBoxContainer/UpButton"]
+[node name="UpArrow" type="Sprite2D" parent="VBoxContainer/UpButton"]
 self_modulate = Color(1, 1, 1, 0)
-layout_mode = 0
-offset_left = 475.3
-offset_top = 380.5
-offset_right = 530.3
-offset_bottom = 451.5
-rotation = 4.71239
-scale = Vector2(1.6, 1.6)
-pivot_offset = Vector2(27.5, 35.5)
-texture = ExtResource("3_d22vv")
+position = Vector2(490, 417)
+rotation = -1.5708
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_xnegl")
 
-[node name="UpArrow2" type="TextureRect" parent="VBoxContainer/UpButton"]
+[node name="UpArrow2" type="Sprite2D" parent="VBoxContainer/UpButton"]
 self_modulate = Color(1, 1, 1, 0)
-layout_mode = 0
-offset_left = 121.0
-offset_top = 157.0
-offset_right = 176.0
-offset_bottom = 228.0
-rotation = 4.71239
-scale = Vector2(1.6, 1.6)
-pivot_offset = Vector2(27.5, 35.5)
-texture = ExtResource("3_d22vv")
+position = Vector2(148, 190)
+rotation = -1.5708
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_xnegl")
 
 [node name="DownButton" type="Button" parent="VBoxContainer"]
 self_modulate = Color(1, 1, 1, 0)
@@ -54,26 +44,16 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.5
 
-[node name="DownArrow" type="TextureRect" parent="VBoxContainer/DownButton"]
+[node name="DownArrow" type="Sprite2D" parent="VBoxContainer/DownButton"]
 self_modulate = Color(1, 1, 1, 0)
-layout_mode = 0
-offset_left = 475.3
-offset_top = 25.5001
-offset_right = 530.3
-offset_bottom = 96.5001
+position = Vector2(491, 52)
 rotation = 1.5708
-scale = Vector2(1.6, 1.6)
-pivot_offset = Vector2(27.5, 35.5)
-texture = ExtResource("3_d22vv")
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_xnegl")
 
-[node name="DownArrow2" type="TextureRect" parent="VBoxContainer/DownButton"]
+[node name="DownArrow2" type="Sprite2D" parent="VBoxContainer/DownButton"]
 self_modulate = Color(1, 1, 1, 0)
-layout_mode = 0
-offset_left = 120.0
-offset_top = 127.0
-offset_right = 175.0
-offset_bottom = 198.0
+position = Vector2(149, 162)
 rotation = 1.5708
-scale = Vector2(1.6, 1.6)
-pivot_offset = Vector2(27.5, 35.5)
-texture = ExtResource("3_d22vv")
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_xnegl")

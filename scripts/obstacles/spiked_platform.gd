@@ -4,7 +4,7 @@ class_name SpikedPlatform
 @export var base_speed := 10.0
 @export var bounce_area : Area2D
 @export var hurt_area : Area2D
-@export var destroy_points := 50
+@export var destroy_points := 1.0
 @export var missed_points:= 25
 @export var spring_force:=0
 @export var spawn_y_range:= Vector2(GameParameters.PLAYER_SIZE, GameParameters.WINDOW_HEIGHT-GameParameters.PLAYER_SIZE)

@@ -20,7 +20,6 @@ texture = ExtResource("2_7jib4")
 
 [node name="Red" type="Sprite2D" parent="ParallaxLayer"]
 visible = false
-modulate = Color(0.68101, 0.68101, 0.68101, 0.678431)
 position = Vector2(1280, 360)
 texture = ExtResource("3_8xgxc")
 
