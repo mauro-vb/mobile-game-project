@@ -9,14 +9,16 @@ extends Node2D
 		if health <= 0:
 			health_depleted.emit()
 
-var max_health = health
+@onready var max_health = health
 
 func damage(damage_amount:int):
 	health -= damage_amount
 
 func heal(healing_amount:int):
 	health += healing_amount
-
+	if health > max_health:
+		health = max_health
+	
 # create signals
 signal health_changed
 signal health_depleted

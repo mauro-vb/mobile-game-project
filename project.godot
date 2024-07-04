@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="MOB_Game"
-run/main_scene="res://scenes/main.tscn"
+run/main_scene="res://scenes/ui/temp_menu.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
@@ -23,10 +23,18 @@ GameParameters="*res://scripts/game_parameters.gd"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/size/resizable=false
+window/size/window_width_override=2560
+window/size/window_height_override=1440
+window/stretch/mode="canvas_items"
 
 [dotnet]
 
 project/assembly_name="MOB_Game"
+
+[gui]
+
+theme/custom_font="res://assets/fonts/SS Rainbow.otf"
 
 [input]
 
@@ -46,3 +54,4 @@ down={
 [rendering]
 
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true

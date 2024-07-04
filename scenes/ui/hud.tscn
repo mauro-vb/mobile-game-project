@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=3 uid="uid://b1fn3eh2q2f4t"]
+
+[ext_resource type="Script" path="res://scripts/ui/hud.gd" id="1_p8no5"]
+[ext_resource type="Script" path="res://scripts/ui/score.gd" id="2_kmpmg"]
+[ext_resource type="Script" path="res://scripts/ui/health.gd" id="3_85hfi"]
+[ext_resource type="Texture2D" uid="uid://da2lvayaflwvq" path="res://assets/AnnaAlanArt/cropped_heart.png" id="3_cealr"]
+
+[node name="Hud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("1_p8no5")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="HealthScoreContainer" type="HBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="HeartContainer" type="HBoxContainer" parent="PanelContainer/HealthScoreContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+script = ExtResource("3_85hfi")
+metadata/_edit_group_ = true
+
+[node name="Heart1" type="TextureRect" parent="PanelContainer/HealthScoreContainer/HeartContainer"]
+layout_mode = 2
+texture = ExtResource("3_cealr")
+stretch_mode = 2
+
+[node name="Heart2" type="TextureRect" parent="PanelContainer/HealthScoreContainer/HeartContainer"]
+layout_mode = 2
+texture = ExtResource("3_cealr")
+stretch_mode = 2
+
+[node name="Heart3" type="TextureRect" parent="PanelContainer/HealthScoreContainer/HeartContainer"]
+layout_mode = 2
+texture = ExtResource("3_cealr")
+stretch_mode = 2
+
+[node name="Heart4" type="TextureRect" parent="PanelContainer/HealthScoreContainer/HeartContainer"]
+layout_mode = 2
+texture = ExtResource("3_cealr")
+stretch_mode = 2
+
+[node name="Heart5" type="TextureRect" parent="PanelContainer/HealthScoreContainer/HeartContainer"]
+layout_mode = 2
+texture = ExtResource("3_cealr")
+stretch_mode = 2
+
+[node name="Score" type="Label" parent="PanelContainer/HealthScoreContainer"]
+modulate = Color(0.752941, 0.752941, 0.752941, 1)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 48
+text = "Score: 0  "
+horizontal_alignment = 2
+script = ExtResource("2_kmpmg")
+metadata/_edit_group_ = true

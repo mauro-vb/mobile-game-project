@@ -1,37 +1,140 @@
-[gd_scene load_steps=8 format=3 uid="uid://osjos5q8palv"]
+[gd_scene load_steps=23 format=3 uid="uid://osjos5q8palv"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_bsgab"]
 [ext_resource type="Script" path="res://scripts/components/health_component.gd" id="1_inuh8"]
 [ext_resource type="Script" path="res://scripts/components/hitbox_component.gd" id="2_2tfcn"]
 [ext_resource type="Shader" path="res://shaders/flash.gdshader" id="2_wicmm"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uavc1"]
-shader = ExtResource("2_wicmm")
-shader_parameter/color = null
-shader_parameter/flashState = 0.0
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_y1kt6"]
+[ext_resource type="Texture2D" uid="uid://b2esqeedktma1" path="res://assets/AnnaAlanArt/character-01-100Percent.png" id="5_4ayih"]
+[ext_resource type="AudioStream" uid="uid://cusx8d3mrorym" path="res://assets/sound/pinball.mp3" id="6_8b3r3"]
+[ext_resource type="AudioStream" uid="uid://cq8q7ggbq7nr" path="res://assets/sound/error_short/error.mp3" id="7_rndlg"]
+[ext_resource type="AudioStream" uid="uid://ct3mk80h1uxlq" path="res://assets/sound/wall_bounce.mp3" id="8_c0c6j"]
+[ext_resource type="Texture2D" uid="uid://cvyuqf0k4isf6" path="res://assets/sprites/player_sprite_sheet.png" id="9_i3dtl"]
+[ext_resource type="Texture2D" uid="uid://b7i6wk8wfaiho" path="res://assets/sprites/player_with_legs_sprite_sheet.png" id="10_s7rio"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ewfx"]
 size = Vector2(30, 30)
 
-[node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_bsgab")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uavc1"]
+shader = ExtResource("2_wicmm")
+shader_parameter/base_color = Color(1, 1, 1, 1)
+shader_parameter/color = null
+shader_parameter/flashState = 0.0
 
-[node name="TempSprite" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_uavc1")
-scale = Vector2(30.5, 30.5)
-texture = SubResource("CanvasTexture_y1kt6")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y3xs3"]
+shader = ExtResource("2_wicmm")
+shader_parameter/base_color = Color(1, 1, 1, 1)
+shader_parameter/color = null
+shader_parameter/flashState = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ne6i5"]
+atlas = ExtResource("9_i3dtl")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j5x4b"]
+atlas = ExtResource("9_i3dtl")
+region = Rect2(150, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1pq6"]
+atlas = ExtResource("9_i3dtl")
+region = Rect2(300, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hohf5"]
+atlas = ExtResource("9_i3dtl")
+region = Rect2(450, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbxb2"]
+atlas = ExtResource("10_s7rio")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xj163"]
+atlas = ExtResource("10_s7rio")
+region = Rect2(150, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_show4"]
+atlas = ExtResource("10_s7rio")
+region = Rect2(300, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4t73"]
+atlas = ExtResource("10_s7rio")
+region = Rect2(450, 0, 150, 150)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_54hmw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ne6i5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j5x4b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1pq6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hohf5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbxb2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xj163")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_show4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y4t73")
+}],
+"loop": true,
+"name": &"with_legs",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("health")]
+script = ExtResource("1_bsgab")
+health = NodePath("Health")
 
 [node name="Health" type="Node2D" parent="."]
 script = ExtResource("1_inuh8")
+health = 5
 
 [node name="HitBox" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
 script = ExtResource("2_2tfcn")
 health_component = NodePath("../Health")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+scale = Vector2(1.6, 1.6)
 shape = SubResource("RectangleShape2D_0ewfx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.6, 1.6)
 shape = SubResource("RectangleShape2D_0ewfx")
+
+[node name="TempSprite" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_uavc1")
+position = Vector2(-10, 5)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_4ayih")
+
+[node name="BounceSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_8b3r3")
+volume_db = -7.0
+
+[node name="ErrorSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_rndlg")
+
+[node name="WallBounceSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_c0c6j")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_y3xs3")
+position = Vector2(-10, 4)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_54hmw")
+animation = &"with_legs"
